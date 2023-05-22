@@ -58,11 +58,11 @@
             <td>{{ $partnership->user?->name }}</td>
             <td>{{ $partnership->partnership_title_en }}</td>
             <td>{{ $partnership->partnership_title_kh }}</td>
-            <td>{{ Str::limit($partnership->partnership_description_en, '50', '...') }}</td>
-            <td>{{ Str::limit($partnership->partnership_description_kh, '50', '...') }}</td>
+            <td>{{ Str::limit($partnership->partnership_description_en, '30', '...') }}</td>
+            <td>{{ Str::limit($partnership->partnership_description_kh, '30', '...') }}</td>
             <td>{{ $partnership->partnership_type }}</td>
-            <td>{{ Str::limit($partnership->partnership_logo, '80', '...') }}</td>
-            <td>{{ Str::limit($partnership->signed_date, '80', '...') }}</td>
+            <td>{{ Str::limit($partnership->partnership_logo, '30', '...') }}</td>
+            <td>{{ Str::limit($partnership->signed_date, '30', '...') }}</td>
             <td class="text-center d-flex justify-content-center">
               <a href="{{ route('partnership.edit', ['id' => $partnership->partnership_id]) }}" class="btn btn-info text-white"><i class="far fa-edit"></i></a> 
               <form action="{{ route('partnership.destroy', ['id' => $partnership->partnership_id] ) }}" method="POST">

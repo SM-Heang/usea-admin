@@ -62,8 +62,8 @@
             <td>{{ Str::limit($event->event_title_kh, '30', '...') }}</td>
             <td>{{ $event->event_date }}</td>
             <td>{{ $event->event_cover }}</td>
-            <td>{{ Str::limit($event->event_description_en, '40', '...') }}</td>
-            <td>{{ Str::limit($event->event_description_kh, '40', '...') }}</td>
+            <td>{{ Str::limit($event->event_description_en, '30', '...') }}</td>
+            <td>{{ Str::limit($event->event_description_kh, '30', '...') }}</td>
             <td>{{ $event->event_status }}</td>
             <td>{{ $event->event_style }}</td>
             <td>{{ $event->tags }}</td>

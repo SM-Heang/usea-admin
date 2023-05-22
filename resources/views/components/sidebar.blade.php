@@ -135,8 +135,8 @@
             </li>
           </ul>
         </li>
-        <li class="nav-item">
-          <a href="#" class="nav-link">
+        <li class="nav-item {{ Request::is('study-tour', 'study-tour-image') ? 'menu-open' :'' }}">
+          <a href="#" class="nav-link {{ Request::is('study-tour', 'study-tour-image') ? 'active' :'' }}">
             <i class="nav-icon fas fa-bus"></i>
             <p>
               USEA Study Tour
@@ -145,13 +145,13 @@
           </a>
           <ul class="nav nav-treeview">
             <li class="nav-item">
-              <a href="{{ route('study-tour.index') }}" class="nav-link">
+              <a href="{{ route('study-tour.index') }}" class="nav-link {{ Request::is('study-tour') ? 'active' : '' }}">
                 <i class="far fa-circle nav-icon"></i>
                 <p>Study Tour</p>
               </a>
             </li>
             <li class="nav-item">
-              <a href="{{ route('study-tour.images.index') }}" class="nav-link">
+              <a href="{{ route('study-tour.images.index') }}" class="nav-link {{ Request::is('study-tour-image') ? 'active' : '' }}">
                 <i class="far fa-circle nav-icon"></i>
                 <p>Study Tour Images</p>
               </a>

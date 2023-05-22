@@ -26,7 +26,7 @@
         <div class="col-sm-6">
           <ol class="breadcrumb float-sm-right">
             <li class="breadcrumb-item"><a href="{{ url('/') }}">Dashboard</a></li>
-            <li class="breadcrumb-item active"><a href="{{ route('articles.create') }}">Post Articles Group</a></li>
+            <li class="breadcrumb-item active"><a href="{{ route('articles.create') }}">Post Articles </a></li>
           </ol>
         </div>
       </div>
@@ -38,7 +38,7 @@
     <div class="row">
       <div class="col-md-12">
         <h1 class="text-center">USEA Article</h1>
-        <a href="{{ route('articles.create') }}" class="btn btn-success float-right p-2 m-2"> Add Articles Group <i class="fas fa-plus"></i></a>
+        <a href="{{ route('articles.create') }}" class="btn btn-success float-right p-2 m-2"> Add Articles <i class="fas fa-plus"></i></a>
         <table class="table">
           <tr class="text-center">
             <th>article_id</th>
@@ -58,11 +58,11 @@
             <td>{{ $article->user?->name }}</td>
             <td>{{ $article->article_title_en }}</td>
             <td>{{ $article->article_title_kh }}</td>
-            <td>{{ Str::limit($article->article_description_en, '50', '...') }}</td>
-            <td>{{ Str::limit($article->article_description_kh, '50', '...') }}</td>
+            <td>{{ Str::limit($article->article_description_en, '30', '...') }}</td>
+            <td>{{ Str::limit($article->article_description_kh, '30', '...') }}</td>
             <td>{{ $article->categories_id }}</td>
-            <td>{{ Str::limit($article->keywords, '80', '...') }}</td>
-            <td>{{ Str::limit($article->sitemap, '80', '...') }}</td>
+            <td>{{ Str::limit($article->keywords, '30', '...') }}</td>
+            <td>{{ Str::limit($article->sitemap, '30', '...') }}</td>
             <td class="text-center d-flex justify-content-center">
               <a href="{{ route('articles.edit', ['id' => $article->article_id]) }}" class="btn btn-info text-white"><i class="far fa-edit"></i></a> 
               <form action="{{ route('articles.destroy', ['id' => $article->article_id] ) }}" method="POST">
