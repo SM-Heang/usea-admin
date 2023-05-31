@@ -86,7 +86,7 @@
       tabsize: 2,
       height: 500,
       lineHeights: ['1.0', '1.15', '1.5', '2.0', '2.5', '3.0'],
-      fontNames: ['Arial', 'Arial Black', 'Comic Sans MS', 'Courier New', 'Merriweather', 'Times New Roman', 'Poppins' , 'Khmer OS Siemreap', 'Khmer OS Battambang','Khmer Mool1', 'Khmer OS Muol'],
+      fontNames: ['Arial', 'Arial Black', 'Comic Sans MS', 'Courier New', 'Merriweather', 'Times New Roman', 'Poppins' , 'Khmer OS Siemreap', 'Khmer OS Battambang','Khmer Mool1', 'Khmer OS Muol', 'Khmer OS System'],
     })
     $('#summernote1').summernote({
       toolbar: [
@@ -94,14 +94,14 @@
     ['fontname', ['fontname', 'fontsize']],
     ['color', ['color', 'forecolor']],
     ['para', ['style','ul', 'ol', 'paragraph','height']],
-    ['table', ['table']],
+    ['table', ['table', 'table']],
     ['insert', ['link', 'picture', 'video', 'hr']],
     ['view', ['fullscreen', 'codeview', 'undo', 'redo']],
   ],
       placeholder: "",
       tabsize: 2,
       height: 500,
-      fontNames: ['Arial', 'Arial Black', 'Comic Sans MS', 'Courier New', 'Merriweather', 'Times New Roman', 'Poppins' , 'Khmer OS Siemreap','Khmer Mool1', 'Khmer OS Muol'],
+      fontNames: ['Arial', 'Arial Black', 'Comic Sans MS', 'Courier New', 'Merriweather', 'Times New Roman', 'Poppins' , 'Khmer OS Siemreap','Khmer OS Battambang','Khmer Mool1', 'Khmer OS Muol', 'Khmer OS System'],
     })
 
     // CodeMirror

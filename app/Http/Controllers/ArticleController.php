@@ -13,6 +13,7 @@ class ArticleController extends Controller
     {
         $articles = Article::paginate(15);
         return view('articles.index', ['articles' => $articles]);
+        
     }
 
     /**
