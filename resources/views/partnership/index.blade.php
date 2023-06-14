@@ -48,6 +48,7 @@
             <th>partnership_description_en</th>
             <th>partnership_description_kh</th>
             <th>partnership_type</th>
+            <th>partnership_link</th>
             <th>partnership_logo</th>
             <th>signed_date</th>
             <th>action</th>
@@ -61,6 +62,7 @@
             <td>{{ Str::limit($partnership->partnership_description_en, '30', '...') }}</td>
             <td>{{ Str::limit($partnership->partnership_description_kh, '30', '...') }}</td>
             <td>{{ $partnership->partnership_type }}</td>
+            <td>{{ $partnership->partnership_link }}</td>
             <td>{{ Str::limit($partnership->partnership_logo, '30', '...') }}</td>
             <td>{{ Str::limit($partnership->signed_date, '30', '...') }}</td>
             <td class="text-center d-flex justify-content-center">

@@ -36,6 +36,7 @@ class PartnershipController extends Controller
         $partnership->partnership_description_en = $request -> input('partnership_description_en'); 
         $partnership->partnership_description_kh = $request -> input('partnership_description_kh'); 
         $partnership->partnership_type = $request -> input('partnership_type'); 
+        $partnership->partnership_link = $request -> input('partnership_link'); 
         $partnership->partnership_logo = $request -> input('partnership_logo'); 
         $partnership->signed_date = $request -> input('signed_date'); 
         $partnership->save();
@@ -71,6 +72,7 @@ class PartnershipController extends Controller
         $partnership->partnership_description_en = $request -> input('partnership_description_en'); 
         $partnership->partnership_description_kh = $request -> input('partnership_description_kh'); 
         $partnership->partnership_type = $request -> input('partnership_type'); 
+        $partnership->partnership_link = $request -> input('partnership_link'); 
         $partnership->partnership_logo = $request -> input('partnership_logo'); 
         $partnership->signed_date = $request -> input('signed_date'); 
         $partnership->save();

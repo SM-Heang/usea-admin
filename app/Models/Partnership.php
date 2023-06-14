@@ -10,7 +10,7 @@ class Partnership extends Model
     use HasFactory;
     protected $primaryKey = 'partnership_id';
     protected $table = 'usea_partnership';
-    protected $fillable = ['partnership_title_en', 'partnership_title_kh', 'partnership_description_en', 'partnership_description_kh', 'partnership_type', 'partnership_logo', 'signed_date'];
+    protected $fillable = ['partnership_title_en', 'partnership_title_kh', 'partnership_description_en', 'partnership_description_kh', 'partnership_type','partnership_link', 'partnership_logo', 'signed_date'];
     public function user(){
         return $this->belongsTo(Users::class);
     }

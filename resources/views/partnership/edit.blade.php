@@ -49,6 +49,10 @@
           <input type="text" id="partnership_type" name="partnership_type" class="form-control" value="{{ $partnerships->partnership_type }}"/>
         </div>
         <div class="form-outline mb-4">
+          <label class="form-label" for="partnership_link">Partnership Link</label>
+          <input type="text" id="partnership_link" name="partnership_link" class="form-control" value="{{ $partnerships->partnership_link }}"/>
+        </div>
+        <div class="form-outline mb-4">
           <label class="form-label" for="partnership_logo">Partnership Logo</label>
           <input type="text" id="partnership_logo" name="partnership_logo" class="form-control" value="{{ $partnerships->partnership_logo }}"/>
         </div>

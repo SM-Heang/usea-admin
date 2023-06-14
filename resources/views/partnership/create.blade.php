@@ -49,6 +49,10 @@
           <input type="text" id="partnership_type" name="partnership_type" class="form-control" />
         </div>
         <div class="form-outline mb-4">
+          <label class="form-label" for="partnership_link">Partnership Link</label>
+          <input type="text" id="partnership_Link" name="partnership_Link" class="form-control" />
+        </div>
+        <div class="form-outline mb-4">
           <label class="form-label" for="partnership_logo">Partnership Logo</label>
           <input type="text" id="partnership_logo" name="partnership_logo" class="form-control" />
         </div>
