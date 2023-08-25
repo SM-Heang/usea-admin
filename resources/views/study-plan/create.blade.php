@@ -12,7 +12,7 @@
         <div class="col-sm-6">
           <ol class="breadcrumb float-sm-right">
             <li class="breadcrumb-item"><a href="{{ route('study-plan.index') }}">Dashboard</a></li>
-            <li class="breadcrumb-item active"><a href="{{ route('study-tour.create') }}">Post Study plan</a></li>
+            <li class="breadcrumb-item active"><a href="{{ route('study-plan.create') }}">Post Study plan</a></li>
           </ol>
         </div>
       </div>

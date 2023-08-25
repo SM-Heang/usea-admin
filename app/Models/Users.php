@@ -38,5 +38,8 @@ class Users extends Model
     public function semester(){
         return $this->hasMany(Semester::class);
     }
+    public function studyplan(){
+        return $this->hasMany(StudyPlan::class);
+    }
 
 }

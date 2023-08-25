@@ -14,6 +14,10 @@ class StudyPlan extends Model
     protected $fillable = ['fac_icon', 'fac_name', 'major_name', 'education_name','major_info','study_year','semester_name','subject_name','study_hour','credit'];
     use HasFactory;
 
+    public function user(){
+        return $this->belongsTo(Users::class);
+    }
+
     public function major()
     {
         return $this->belongsTo(Major::class, 'major_name', 'major_id');

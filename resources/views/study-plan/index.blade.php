@@ -42,6 +42,7 @@
         <table class="table">
           <tr class="text-center">
             <th>study_plan_id</th>
+            <th>Updated by</th>
             <th>Fac_icon</th>
             <th>fac_name</th>
             <th>Major_name</th>
@@ -52,10 +53,13 @@
             <th>subject_name</th>
             <th>study_hour</th>
             <th>credit</th>
+            <th>Updated at</th>
+            <th>Created at</th>
           </tr>
           @foreach ($plans as $plan)
           <tr class="text-center">
             <td>{{ $plan->study_plan_id}}</td>
+            <td>{{ $plan->user?->name}}</td>
             <td>{{ $plan->fac_icon}}</td>
             <td>{{ $plan->faculty?->fac_name_kh}}</td>
             <td>{{ $plan->major?->major_name_kh}}</td>
@@ -66,6 +70,8 @@
             <td>{{ $plan->subject?->subject_name_kh}}</td>
             <td>{{ $plan->study_hour }}</td>
             <td>{{ $plan->credit }}</td>
+            <td>{{ $plan->updated_at?->format('d-M-Y')}}</td>
+            <td>{{ $plan->created_at?->format('d-M-Y')}}</td>
             <td class="text-center d-flex justify-content-center">
               <a href="{{ route('study-plan.edit', ['id' => $plan->study_plan_id]) }}" class="btn btn-info text-white"><i class="far fa-edit"></i></a> 
               {{-- Modal confirm Delete --}}
