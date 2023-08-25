@@ -22,4 +22,21 @@ class Users extends Model
     public function partnership(){
         return $this->hasMany(Partnership::class);
     }
+    public function major(){
+        return $this->hasMany(Major::class);
+    }
+    public function faculty(){
+        return $this->hasMany(Faculty::class);
+    }
+    public function subject(){
+        return $this->hasMany(Subject::class);
+    }
+    //study-year
+    public function year(){
+        return $this->hasMany(StudyYear::class);
+    }
+    public function semester(){
+        return $this->hasMany(Semester::class);
+    }
+
 }

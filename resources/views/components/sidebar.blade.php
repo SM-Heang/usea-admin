@@ -158,6 +158,53 @@
             </li>
           </ul>
         </li>
+        <li class="nav-item {{ Request::is('study-plan', 'major', 'faculty', 'subject', 'study-year', 'semester') ? 'menu-open' :'' }}">
+          <a href="#" class="nav-link {{ Request::is('study-plan', 'major', 'faculty', 'subject', 'study-year', 'semester') ? 'active' :'' }}">
+            <i class="nav-icon fas fa-calendar-check"></i>
+            <p>
+              USEA Study Plan
+              <i class="fas fa-angle-left right"></i>
+            </p>
+          </a>
+          <ul class="nav nav-treeview">
+            <li class="nav-item">
+              <a href="{{route('study-plan.index')}}" class="nav-link {{ Request::is('study-plan') ? 'active' : '' }}">
+                <i class="far fa-circle nav-icon"></i>
+                <p>Study Plan</p>
+              </a>
+            </li>
+            <li class="nav-item">
+              <a href="{{route('study-plan.major.index')}}" class="nav-link {{ Request::is('major') ? 'active' : '' }}">
+                <i class="far fa-circle nav-icon"></i>
+                <p>Usea Major</p>
+              </a>
+            </li>
+            <li class="nav-item">
+              <a href="{{route('study-plan.faculty.index')}}" class="nav-link {{ Request::is('faculty') ? 'active' : '' }}">
+                <i class="far fa-circle nav-icon"></i>
+                <p>Usea Faculty</p>
+              </a>
+            </li>
+            <li class="nav-item">
+              <a href="{{route('study-plan.subject.index')}}" class="nav-link {{ Request::is('subject') ? 'active' : '' }}">
+                <i class="far fa-circle nav-icon"></i>
+                <p>Usea Subject</p>
+              </a>
+            </li>
+            <li class="nav-item">
+              <a href="{{route('study-plan.study-year.index')}}" class="nav-link {{ Request::is('study-year') ? 'active' : '' }}">
+                <i class="far fa-circle nav-icon"></i>
+                <p>Study Year</p>
+              </a>
+            </li>
+            <li class="nav-item">
+              <a href="{{route('study-plan.semester.index')}}" class="nav-link {{ Request::is('semester') ? 'active' : '' }}">
+                <i class="far fa-circle nav-icon"></i>
+                <p>Study Semester</p>
+              </a>
+            </li>
+          </ul>
+        </li>
         <li class="d-flex justify-content-center align-items-center nav-item">
           @if (auth()->check())
           <form action="{{ route('logout') }}" method="POST">

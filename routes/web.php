@@ -12,6 +12,13 @@ use App\Http\Controllers\ScholarshipController;
 use App\Http\Controllers\ScholarshipCategoryController;
 use App\Http\Controllers\StudyTourController;
 use App\Http\Controllers\StudyTourImagesController;
+use App\Http\Controllers\StudyPlanController;
+use App\Http\Controllers\MajorController;
+use App\Http\Controllers\FacultyController;
+use App\Http\Controllers\SubjectController;
+use App\Http\Controllers\StudyYearController;
+use App\Http\Controllers\SemesterController;
+
 use Illuminate\Support\Facades\Route;
 
 // set active sidebar
@@ -150,4 +157,67 @@ Route::controller(AuthController::class)->group(function (){
   Route::post('/authenticate', 'authenticate')->name('authenticate');
   Route::post('/logout', 'logout')->name('logout');
 });
+
+//study-plan route
+Route::controller(StudyPlanController::class)->middleware('auth')->group(function () {
+  Route::get('/study-plan', 'index')->name('study-plan.index');
+  Route::get('/study-plan/create','create')->name('study-plan.create');
+  Route::post('/study-plan','store')->name('study-plan.store');
+  Route::get('/study-plan/{id}', 'edit')->name('study-plan.edit');
+  Route::put('/study-plan/{id}', 'update')->name('study-plan.update');
+  Route::delete('/study-plan/{id}', 'destroy')->name('study-plan.destroy');
+});
+
+//major route
+Route::controller(MajorController::class)->middleware('auth')->group(function () {
+  Route::get('/major', 'index')->name('study-plan.major.index');
+  Route::get('/major/create','create')->name('study-plan.major.create');
+  Route::post('/major/store','store')->name('study-plan.major.store');
+  Route::get('/major/{id}', 'edit')->name('study-plan.major.edit');
+  Route::put('major/{id}', 'update')->name('study-plan.major.update');
+  Route::delete('major/{id}', 'destroy')->name('study-plan.major.destroy');
+});
+
+//faculty route
+Route::controller(FacultyController::class)->middleware('auth')->group(function () {
+  Route::get('/faculty', 'index')->name('study-plan.faculty.index');
+  Route::get('/faculty/create','create')->name('study-plan.faculty.create');
+  Route::post('/faculty','store')->name('study-plan.faculty.store');
+    Route::get('/faculty/{id}', 'edit')->name('study-plan.faculty.edit');
+    Route::put('/faculty/{id}', 'update')->name('study-plan.faculty.update');
+  Route::delete('/faculty/{id}', 'destroy')->name('study-plan.faculty.destroy');
+});
+
+//subject route
+Route::controller(SubjectController::class)->middleware('auth')->group(function () {
+  Route::get('/subject', 'index')->name('study-plan.subject.index');
+  Route::get('/subject/create','create')->name('study-plan.subject.create');
+  Route::post('/subject','store')->name('study-plan.subject.store');
+  Route::get('/subject/{id}', 'edit')->name('study-plan.subject.edit');
+  Route::put('/subject/{id}', 'update')->name('study-plan.subject.update');
+  Route::delete('/subject/{id}', 'destroy')->name('study-plan.subject.destroy');
+});
+
+//Studyear route
+Route::controller(StudyYearController::class)->middleware('auth')->group(function () {
+  Route::get('/study-year', 'index')->name('study-plan.study-year.index');
+  Route::get('/study-year/create','create')->name('study-plan.study-year.create');
+  Route::post('/study-year','store')->name('study-plan.study-year.store');
+  Route::get('/study-year/{id}', 'edit')->name('study-plan.study-year.edit');
+  Route::put('/study-year/{id}', 'update')->name('study-plan.study-year.update');
+  Route::delete('/study-year/{id}', 'destroy')->name('study-plan.study-year.destroy');
+});
+
+//Semester route
+Route::controller(SemesterController::class)->middleware('auth')->group(function () {
+  Route::get('/semester', 'index')->name('study-plan.semester.index');
+  Route::get('/semester/create','create')->name('study-plan.semester.create');
+  Route::post('/semester','store')->name('study-plan.semester.store');
+  Route::get('/semester/{id}', 'edit')->name('study-plan.semester.edit');
+  Route::put('/semester/{id}', 'update')->name('study-plan.semester.update');
+  Route::delete('/semester/{id}', 'destroy')->name('study-plan.semester.destroy');
+});
+
+
+
 
