@@ -47,7 +47,8 @@
             <th>fac_name</th>
             <th>Major_name</th>
             <th>Education_name</th>
-            <th>Major_info</th>
+            <th>Major_info_en</th>
+            <th>Major_info_kh</th>
             <th>study_year</th>
             <th>semester_name</th>
             <th>subject_name</th>
@@ -60,11 +61,12 @@
           <tr class="text-center">
             <td>{{ $plan->study_plan_id}}</td>
             <td>{{ $plan->user?->name}}</td>
-            <td>{{ $plan->fac_icon}}</td>
+            <td>{{ $plan->facicon?->icon_name}}</td>
             <td>{{ $plan->faculty?->fac_name_kh}}</td>
             <td>{{ $plan->major?->major_name_kh}}</td>
             <td>{{ $plan->degree?->degree_name_kh}}</td>
-            <td>{{ $plan->major_info }}</td>
+            <td>{{ mb_strimwidth($plan->major?->major_info_en, 0 ,50, "...") }}</td>
+            <td>{{ mb_strimwidth($plan->major?->major_info_kh, 0 ,50, "...") }}</td>
             <td>{{ $plan->studyYear?->study_year_kh}}</td>
             <td>{{ $plan->semester?->semester_name_kh}}</td>
             <td>{{ $plan->subject?->subject_name_kh}}</td>

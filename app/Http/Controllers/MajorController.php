@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Models\Major;
 use App\Models\Faculty;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Validator;
 
 class MajorController extends Controller
 {
@@ -24,12 +25,30 @@ class MajorController extends Controller
 
     public function store(Request $request)
     {
+        $facultys = Faculty::all();
+        $maxFacultyCount = count($facultys);
+
+        DB::transaction(function () use($request, $maxFacultyCount){
+
+        $validated = $request->validate([
+            'major_name_en' => 'required',
+            'major_name_kh' => 'required',
+            'major_info_en' => 'required',
+            'major_info_kh' => 'required',
+            'fac_id' => ['required', 'integer', "max:$maxFacultyCount"],
+        ]);
+        
         $major = new Major;
         $major->major_name_en = $request->major_name_en;
         $major->major_name_kh = $request->major_name_kh;
+        $major->major_info_en = $request->major_info_en;
+        $major->major_info_kh = $request->major_info_kh;
         $major->fac_id  = $request->fac_id;
         $major->user_id = auth()->id(); 
         $major->save();
+
+        });
+
         return redirect()->route('study-plan.major.index')->with('status', 'Major Added  Successfully');
     }
 
@@ -43,17 +62,28 @@ class MajorController extends Controller
 
     public function update(Request $request, $id)
     {
-        // $validated = $request->validate([
-        //     'major_name_en' => 'required|max:255',
-        //     'major_name_kh' => 'required|max:255',
-        //     'fac_id' => 'required',
-        // ]);
+        $facultys = Faculty::all();
+        $maxFacultyCount = count($facultys);
+
+        DB::transaction(function () use($request, $id, $maxFacultyCount){
+        $validated = $request->validate([
+            'major_name_en' => 'required',
+            'major_name_kh' => 'required',
+            'major_info_en' => 'required',
+            'major_info_kh' => 'required',
+            'fac_id' => ['required', 'integer', "max:$maxFacultyCount"],
+        ]);
         $major = Major::findOrFail($id);
         $major->major_name_en = $request->major_name_en;
         $major->major_name_kh = $request->major_name_kh;
+        $major->major_info_en = $request->major_info_en;
+        $major->major_info_kh = $request->major_info_kh;
         $major->fac_id  = $request->fac_id;
-        $major->user_id = auth()->id(); 
+        $major->user_id = auth()->id();
         $major->save();
+
+        });
+
         return redirect()->route('study-plan.major.index')->with('status', 'Major Edited  Successfully');
         
     }

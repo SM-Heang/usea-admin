@@ -74,7 +74,6 @@
                 @method('DELETE')
                 <button type="submit" class="btn btn-danger" onclick="return confirm('Are You Sure?')"><i class="far fa-trash-alt"></i></button>
               </form>
-              
             </td>
           </tr>
           @endforeach

@@ -28,11 +28,17 @@
           <!-- Username input -->
           <div class="form-outline mb-4">
             <label class="form-label" for="study_year_en">study_year_en</label>
-            <input type="text" id="study_year_en" name="study_year_en" class="form-control"/>
+            <input type="text" id="study_year_en" name="study_year_en" class="form-control @error('study_year_en') is-invalid @enderror"/>
+            @error('study_year_en')
+            <div class="invalid-feedback">{{$message}}</div>
+            @enderror
           </div>
           <div class="form-outline mb-4">
             <label class="form-label" for="study_year_kh">study_year_kh</label>
-            <input type="text" id="study_year_kh" name="study_year_kh" class="form-control"/>
+            <input type="text" id="study_year_kh" name="study_year_kh" class="form-control @error('study_year_kh') is-invalid @enderror"/>
+            @error('study_year_kh')
+            <div class="invalid-feedback">{{$message}}</div>
+            @enderror
           </div>
           </div>
           <div class="form-group text-right">

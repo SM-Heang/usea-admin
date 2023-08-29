@@ -18,6 +18,7 @@ use App\Http\Controllers\FacultyController;
 use App\Http\Controllers\SubjectController;
 use App\Http\Controllers\StudyYearController;
 use App\Http\Controllers\SemesterController;
+use App\Http\Controllers\Fac_iconController;
 
 use Illuminate\Support\Facades\Route;
 
@@ -215,9 +216,18 @@ Route::controller(SemesterController::class)->middleware('auth')->group(function
   Route::post('/semester','store')->name('study-plan.semester.store');
   Route::get('/semester/{id}', 'edit')->name('study-plan.semester.edit');
   Route::put('/semester/{id}', 'update')->name('study-plan.semester.update');
-  Route::delete('/semester/{id}', 'destroy')->name('study-plan.semester.destroy');
+  Route::delete('/semester/delete/{id}', 'destroy')->name('study-plan.semester.destroy');
 });
 
+//faculty icon route
+Route::controller(Fac_iconController::class)->middleware('auth')->group(function () {
+  Route::get('/fac_icon', 'index')->name('study-plan.fac_icon.index');
+  Route::get('/fac_icon/create','create')->name('study-plan.fac_icon.create');
+  Route::post('/fac_icon','store')->name('study-plan.fac_icon.store');
+  Route::get('/fac_icon/{id}', 'edit')->name('study-plan.fac_icon.edit');
+  Route::put('/fac_icon/{id}', 'update')->name('study-plan.fac_icon.update');
+  Route::delete('/fac_icon/{id}', 'destroy')->name('study-plan.fac_icon.destroy');
+});
 
 
 

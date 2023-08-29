@@ -158,8 +158,8 @@
             </li>
           </ul>
         </li>
-        <li class="nav-item {{ Request::is('study-plan', 'major', 'faculty', 'subject', 'study-year', 'semester') ? 'menu-open' :'' }}">
-          <a href="#" class="nav-link {{ Request::is('study-plan', 'major', 'faculty', 'subject', 'study-year', 'semester') ? 'active' :'' }}">
+        <li class="nav-item {{ Request::is('study-plan', 'major', 'faculty', 'subject', 'study-year', 'semester', 'fac_icon') ? 'menu-open' :'' }}">
+          <a href="#" class="nav-link {{ Request::is('study-plan', 'major', 'faculty', 'subject', 'study-year', 'semester', 'fac_icon') ? 'active' :'' }}">
             <i class="nav-icon fas fa-calendar-check"></i>
             <p>
               USEA Study Plan
@@ -183,6 +183,12 @@
               <a href="{{route('study-plan.faculty.index')}}" class="nav-link {{ Request::is('faculty') ? 'active' : '' }}">
                 <i class="far fa-circle nav-icon"></i>
                 <p>Usea Faculty</p>
+              </a>
+            </li>
+            <li class="nav-item">
+              <a href="{{route('study-plan.fac_icon.index')}}" class="nav-link {{ Request::is('fac_icon') ? 'active' : '' }}">
+                <i class="far fa-circle nav-icon"></i>
+                <p>Faculty iocn</p>
               </a>
             </li>
             <li class="nav-item">

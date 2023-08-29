@@ -21,12 +21,12 @@
     <div class="container-fluid">
       <div class="row mb-2">
         <div class="col-sm-6">
-          <h1>Usea Major</h1>
+          <h1>Faculty iCon</h1>
         </div>
         <div class="col-sm-6">
           <ol class="breadcrumb float-sm-right">
             <li class="breadcrumb-item"><a href="{{ url('/') }}">Dashboard</a></li>
-            <li class="breadcrumb-item active"><a href="{{route('study-plan.major.index')}}">Study Plan</a></li>
+            <li class="breadcrumb-item active"><a href="{{route('study-plan.fac_icon.index')}}">Faculty iCon</a></li>
           </ol>
         </div>
       </div>
@@ -37,48 +37,38 @@
   <section class="content">
     <div class="row">
       <div class="col-md-12">
-        <h1 class="text-center">Usea Major</h1>
-        <a href="{{ route('study-plan.major.create') }}" class="btn btn-success float-right p-2 m-2"> add major <i class="fas fa-plus"></i></a>
+        <h1 class="text-center">Faculty iCon</h1>
+        <a href="{{route('study-plan.fac_icon.create')}}" class="btn btn-success float-right p-2 m-2"> add Faculty iCon <i class="fas fa-plus"></i></a>
         <table class="table">
           <tr class="text-center">
-            <th>major_id</th>
+            <th>icon_id</th>
             <th>Update By</th>
-            <th>major_name_en</th>
-            <th>major_name_kh</th>
-            <th>major_info_en</th>
-            <th>major_info_kh</th>
-            <th>fac_id</th>
-            <th>fac_name_kh</th>
+            <th>icon_name</th>
             <th>fac_name_en</th>
             <th>created at</th>
             <th>Updated at</th>
             
           </tr>
-          @foreach ($majors as $major)
+          @foreach ($icons as $icon)
           <tr class="text-center">
-            <td>{{ $major->major_id}}</td>
-            <td>{{ $major->user?->name}}</td>
-            <td>{{ $major->major_name_en}}</td>
-            <td>{{ $major->major_name_kh}}</td>
-            <td>{{mb_strimwidth($major->major_info_en, 0 ,50, "...")}}</td>
-            <td>{{mb_strimwidth($major->major_info_kh, 0 ,50, "...")}}</td>
-            <td>{{ $major->fac_id}}</td>
-            <td>{{ $major->faculty?->fac_name_kh}}</td>
-            <td>{{ $major->faculty?->fac_name_en}}</td>
-            <td>{{ $major->created_at?->format('d-M-Y')}}</td>
-            <td>{{ $major->updated_at?->format('d-M-Y')}}</td>
+            <td>{{ $icon->icon_id}}</td>
+            <td>{{ $icon->user?->name}}</td>
+            <td>{{ $icon->icon_name}}</td>
+            <td>{{ $icon->facultys?->fac_name_en}}</td>
+            <td>{{ $icon->created_at?->format('d-M-Y')}}</td>
+            <td>{{ $icon->updated_at?->format('d-M-Y')}}</td>
             
             <td class="text-center d-flex justify-content-center">
-              <a href="{{ route('study-plan.major.edit', ['id' => $major->major_id]) }}" class="btn btn-info text-white"><i class="far fa-edit"></i></a> 
+              <a href="{{ route('study-plan.fac_icon.edit', ['id' => $icon->icon_id]) }}" class="btn btn-info text-white"><i class="far fa-edit"></i></a> 
               {{-- Modal confirm Delete --}}
               <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#myModal">
                 <i class="far fa-trash-alt"></i>
               </button>
             </td>
-          </tr>
+          </tr> 
           @endforeach
         </table>
-        {{ $majors->links() }}
+        {{ $icons->links() }}
         </div>
   </section>
 
@@ -95,7 +85,7 @@
         </div>
         <div class="modal-footer">
           <button type="button" class="btn btn-primary" data-dismiss="modal">Close</button>
-          <form action="{{ route('study-plan.major.destroy', ['id' => $major->major_id]) }}" method="POST">
+          <form action="{{ route('study-plan.fac_icon.destroy', ['id' => $icon->icon_id]) }}" method="POST">
             @csrf
             @method('DELETE')
             <button type="submit" class="btn btn-danger"><i class="far fa-trash-alt"></i> Delete</button>

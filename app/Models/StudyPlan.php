@@ -48,4 +48,9 @@ class StudyPlan extends Model
         return $this->belongsTo(Degree::class, 'education_name', 'degree_id');
     }
 
+    public function facicon()
+    {
+        return $this->belongsTo(Fac_icon::class, 'fac_icon', 'icon_id');
+    }
+
 }

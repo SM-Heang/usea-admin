@@ -60,7 +60,7 @@
               <form action="{{ route('articles.categories.destroy', ['id' => $category->categories_id]) }}" method="POST">
                 @csrf
                 @method('DELETE')
-                <button type="submit" class="btn btn-danger"><i class="far fa-trash-alt"></i></button>
+                <button type="submit" class="btn btn-danger" onclick="return confirm('Are You Sure?')"><i class="far fa-trash-alt"></i></button>
               </form>
             </td>
           </tr>

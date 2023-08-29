@@ -10,7 +10,7 @@ class Major extends Model
 {
     protected $table = 'usea_major';
     protected $primaryKey = 'major_id';
-    protected $fillable = ['major_name_en', 'major_name_kh', 'fac_id','user_id', 'updated_at'];
+    protected $fillable = ['major_name_en', 'major_name_kh', 'fac_id','user_id', 'updated_at', 'major_info_en', 'major_info_kh'];
     use HasFactory;
 
     public function plans()

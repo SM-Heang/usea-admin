@@ -21,11 +21,21 @@ class SubjectController extends Controller
 
     public function store(Request $request)
     {
+        DB::transaction(function () use($request){
+
+        $validated = $request->validate([
+            'subject_name_en' => 'required',
+            'subject_name_kh' => 'required',
+        ]);
+        
         $subject = new Subject;
         $subject->subject_name_en = $request->subject_name_en;
         $subject->subject_name_kh = $request->subject_name_kh;
         $subject->user_id = auth()->id(); 
         $subject->save();
+
+        });
+
         return redirect()->route('study-plan.subject.index')->with('status', 'Subject Added  Successfully');
     }
 
@@ -39,16 +49,20 @@ class SubjectController extends Controller
 
     public function update(Request $request, $id)
     {
-        // $validated = $request->validate([
-        //     'major_name_en' => 'required|max:255',
-        //     'major_name_kh' => 'required|max:255',
-        //     'fac_id' => 'required',
-        // ]);
+        DB::transaction(function () use($request, $id){
+
+        $validated = $request->validate([
+            'subject_name_en' => 'required',
+            'subject_name_kh' => 'required',
+        ]);
         $subject = Subject::findOrFail($id);
         $subject->subject_name_en = $request->subject_name_en;
         $subject->subject_name_kh = $request->subject_name_kh;
         $subject->user_id = auth()->id(); 
         $subject->save();
+
+        });
+
         return redirect()->route('study-plan.subject.index')->with('status', 'Subject Edited  Successfully');
         
     }

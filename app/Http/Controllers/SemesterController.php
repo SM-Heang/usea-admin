@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Semester;
+use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Validator;
 
 class SemesterController extends Controller
 {
@@ -20,11 +22,20 @@ class SemesterController extends Controller
     }
     public function store(Request $request)
     {
+        DB::transaction(function () use($request){
+
+        $validated = $request->validate([
+            'semester_name_en' => ['required', 'string'],
+            'semester_name_kh' => ['required', 'string'],
+        ]);
         $semester = new Semester;
         $semester->semester_name_en = $request->semester_name_en;
         $semester->semester_name_kh = $request->semester_name_kh;
         $semester->user_id = auth()->id(); 
         $semester->save();
+
+        });
+
         return redirect()->route('study-plan.semester.index')->with('status', 'Semester Added  Successfully');
     }
 
@@ -37,16 +48,20 @@ class SemesterController extends Controller
 
     public function update(Request $request, $id)
     {
-        // $validated = $request->validate([
-        //     'major_name_en' => 'required|max:255',
-        //     'major_name_kh' => 'required|max:255',
-        //     'fac_id' => 'required',
-        // ]);
+        DB::transaction(function () use( $request, $id){
+
+        $validated = $request->validate([
+            'semester_name_en' => ['required', 'string'],
+            'semester_name_kh' => ['required', 'string'],
+        ]);
         $semester = Semester::findOrFail($id);
         $semester->semester_name_en = $request->semester_name_en;
         $semester->semester_name_kh = $request->semester_name_kh;
         $semester->user_id = auth()->id(); 
         $semester->save();
+
+        });
+
         return redirect()->route('study-plan.semester.index')->with('status', 'Semester Edited  Successfully');
         
     }

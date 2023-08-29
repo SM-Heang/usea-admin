@@ -59,12 +59,10 @@
             <td>{{ $image->image_style }}</td>
             <td class="text-center d-flex justify-content-center">
               <a href="{{ route('study-tour.images.edit', ['id' => $image->image_id]) }}" class="btn btn-info text-white"><i class="far fa-edit"></i></a> 
-              <form action="{{ route('study-tour.images.destroy', ['id' => $image->image_id]) }}" method="POST">
-                @csrf
-                @method('DELETE')
-                <button type="submit" class="btn btn-danger"><i class="far fa-trash-alt"></i></button>
-              </form>
-              
+              {{-- Modal confirm Delete --}}
+              <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#myModal">
+                <i class="far fa-trash-alt"></i>
+              </button>
             </td>
           </tr>
           @endforeach
@@ -72,6 +70,29 @@
         {{ $images->links() }}
         </div>
   </section>
+
+    <!-- Modal Delete-->
+    <div class="modal fade" id="myModal">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h4 class="modal-title text-danger">Confirm Delete</h4>
+            <button type="button" class="close" data-dismiss="modal">&times;</button>
+          </div>
+          <div class="modal-body text-dark text-center">
+            Are you sure to delete this Data?
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-primary" data-dismiss="modal">Close</button>
+            <form action="{{ route('study-tour.images.destroy', ['id' => $image->image_id]) }}" method="POST">
+              @csrf
+              @method('DELETE')
+              <button type="submit" class="btn btn-danger"><i class="far fa-trash-alt"></i> Delete</button>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
   <!-- /.content -->
 </div>
 @endsection

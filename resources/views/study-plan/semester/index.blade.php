@@ -85,7 +85,7 @@
           </div>
           <div class="modal-footer">
             <button type="button" class="btn btn-primary" data-dismiss="modal">Close</button>
-            <form action="{{ route('study-plan.semester.destroy', ['id' => $semester->semester_id]) }}" method="POST">
+            <form action="{{route('study-plan.semester.destroy' , ['id' => $semester->semester_id])}}" method="POST">
               @csrf
               @method('DELETE')
               <button type="submit" class="btn btn-danger"><i class="far fa-trash-alt"></i> Delete</button>

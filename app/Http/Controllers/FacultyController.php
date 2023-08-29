@@ -22,6 +22,10 @@ class FacultyController extends Controller
 
     public function store(Request $request)
     {
+        $validated = $request->validate([
+            'fac_name_en' => 'required',
+            'fac_name_kh' => 'required',
+        ]);
         $faculty = new Faculty;
         $faculty->fac_name_en = $request->fac_name_en;
         $faculty->fac_name_kh = $request->fac_name_kh;
@@ -39,11 +43,10 @@ class FacultyController extends Controller
 
     public function update(Request $request, $id)
     {
-        // $validated = $request->validate([
-        //     'major_name_en' => 'required|max:255',
-        //     'major_name_kh' => 'required|max:255',
-        //     'fac_id' => 'required',
-        // ]);
+        $validated = $request->validate([
+            'fac_name_en' => 'required',
+            'fac_name_kh' => 'required',
+        ]);
         $faculty = Faculty::findOrFail($id);
         $faculty->fac_name_en = $request->fac_name_en;
         $faculty->fac_name_kh = $request->fac_name_kh;

@@ -28,11 +28,17 @@
           <!-- Username input -->
           <div class="form-outline mb-4">
             <label class="form-label" for="subject_name_en">subject_name_en</label>
-            <input type="text" id="subject_name_en" name="subject_name_en" class="form-control"/>
+            <input type="text" id="subject_name_en" name="subject_name_en" class="form-control @error('subject_name_en') is-invalid @enderror"/>
+            @error('subject_name_en')
+            <div class="invalid-feedback">{{$message}}</div>
+            @enderror
           </div>
           <div class="form-outline mb-4">
             <label class="form-label" for="tour_title_kh">subject_name_kh</label>
-            <input type="text" id="subject_name_kh" name="subject_name_kh" class="form-control"/>
+            <input type="text" id="subject_name_kh" name="subject_name_kh" class="form-control @error('subject_name_kh') is-invalid @enderror"/>
+            @error('subject_name_kh')
+            <div class="invalid-feedback">{{$message}}</div>
+            @enderror
           </div>
           </div>
           <div class="form-group text-right">

@@ -26,45 +26,54 @@
         <form action="{{ route('study-plan.major.update', ['id' => $major->major_id]) }}" method="POST">
           @csrf
           @method('PUT')
-          <!-- Username input -->
+          <!-- Major input -->
           <div class="form-outline mb-4">
             <label class="form-label" for="tour_title">major_name_en</label>
-            <input type="text" id="tour_title" name="major_name_en" class="form-control" value="{{ $major->major_name_en}}"/>
+            <input type="text" id="tour_title" name="major_name_en" class="form-control @error('major_name_en') is-invalid @enderror" value="{{ $major->major_name_en}}"/>
+            @error('major_name_en')
+            <div class="invalid-feedback">{{$message}}</div>
+            @enderror
           </div>
-          {{-- <div class="form-outline mb-4">
-            <label for="category" class="form-label">Category</label>
-                      <select
-                        class="form-select"
-                        name="category_id"
-                        aria-label="Default select example"
-                      >
-                        <option selected>Select Category</option>
-                        @foreach ($categorys as $category)
-                        <option value="{{$category->id}}" {{$category->id == $post->category_id ? 'selected' : ''}}>{{$category->name}}</option>
-                        @endforeach
-                        
-                      </select>
-          </div> --}}
           <div class="form-outline mb-4">
             <label class="form-label" for="tour_title_kh">major_name_kh</label>
-            <input type="text" id="major_name_kh" name="major_name_kh" class="form-control"  value="{{ $major->major_name_kh}}"/>
+            <input type="text" id="major_name_kh" name="major_name_kh" class="form-control @error('major_name_kh') is-invalid @enderror"  value="{{ $major->major_name_kh}}"/>
+            @error('major_name_kh')
+            <div class="invalid-feedback">{{$message}}</div>
+            @enderror
           </div>
           <div class="form-outline mb-4">
+            <label class="form-label" for="major_info_en">major_info_en</label>
+            <input type="text" id="major_info_en" name="major_info_en" class="form-control @error('major_info_en') is-invalid @enderror"  value="{{ $major->major_info_en}}"/>
+            @error('major_info_en')
+            <div class="invalid-feedback">{{$message}}</div>
+            @enderror
+          </div>
+          <div class="form-outline mb-4">
+            <label class="form-label" for="major_info_kh">major_info_kh</label>
+            <input type="text" id="major_info_kh" name="major_info_kh" class="form-control @error('major_info_kh') is-invalid @enderror"  value="{{ $major->major_info_kh}}"/>
+            @error('major_info_kh')
+            <div class="invalid-feedback">{{$message}}</div>
+            @enderror
+          </div>
+          {{-- <div class="form-outline mb-4">
             <label class="form-label" for="fac_id">fac_id</label>
             <input type="number" id="fac_id" name="fac_id" class="form-control" value="{{ $major->fac_id}}"/>
-          </div>
+          </div> --}}
           <div class="form-outline mb-4">
             <label for="fac_id" class="form-label">Fac_Name</label>
             <select
-              class="form-select"
+              class="form-select @error('fac_id') is-invalid @enderror"
               name="fac_id"
               aria-label="Default select example"
             >
               <option selected>Select Fac_name</option>
               @foreach ($facultys as $faculty)
-              <option value="{{$faculty->fac_id}}" {{$faculty->fac_id == $major->fac_id ? 'selected' : ''}}>{{$faculty->fac_name_kh . ' | '. $faculty->fac_name_en}}</option>
+              <option value="{{$faculty->fac_id}}" {{$faculty->fac_id == $major->fac_id ? 'selected' : ''}}>{{$faculty->fac_id.' | ' . $faculty->fac_name_kh . ' | '. $faculty->fac_name_en}}</option>
               @endforeach 
             </select>
+            @error('fac_id')
+            <div class="invalid-feedback">{{$message}}</div>
+            @enderror
           </div>
         <div class="form-group text-right">
           <a href="{{route('study-plan.major.index')}}" type="submit" class="btn btn-success">Back</a>

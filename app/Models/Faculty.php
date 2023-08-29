@@ -23,4 +23,8 @@ class Faculty extends Model
     {
         return $this->hasMany(StudyPlan::class, 'fac_name', 'fac_id');
     }
+    public function facicon()
+    {
+        return $this->hasMany(Fac_icon::class, 'fac_name_en', 'fac_id');
+    }
 }
