@@ -11,7 +11,7 @@ class StudyPlan extends Model
     
     protected $table = 'usea_study_plan';
     protected $primaryKey = 'study_plan_id';
-    protected $fillable = ['fac_icon', 'fac_name', 'major_name', 'education_name','major_info','study_year','semester_name','subject_name','study_hour','credit'];
+    protected $fillable = ['fac_icon', 'fac_name', 'major_name', 'education_name','study_year','semester_name','subject_name','study_hour','credit', 'major_info_en', 'major_info_kh', 'user_id', 'created_at', 'updated_at'];
     use HasFactory;
 
     public function user(){

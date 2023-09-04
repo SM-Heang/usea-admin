@@ -17,6 +17,14 @@ class MajorController extends Controller
         return view('study-plan.major.index', ['majors' => $majors]);
     }
 
+    public function getMajorsByFaculty($fac_id)
+    {
+        // Query the database to retrieve majors related to the selected faculty
+        $majors = Major::where('facu_id', $fac_id)->get();
+
+        return response()->json($majors);
+    }
+
     public function create()
     {
         $facultys = Faculty::all();

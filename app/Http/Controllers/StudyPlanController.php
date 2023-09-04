@@ -24,68 +24,72 @@ class StudyPlanController extends Controller
 
     public function create()
     {
-        $facultys = Faculty::all();
         $majors = Major::all();
+        $facultys = Faculty::all();
         $educations = Degree::all();
         $years = StudyYear::all();
         $semesters = Semester::all();
         $subjects = Subject::all();
         $icons = Fac_icon::all();
-        return view('study-plan.create', ['facultys' => $facultys, 'majors' => $majors, 'educations' => $educations, 'years' => $years, 'semesters' => $semesters, 'subjects' => $subjects, 'icons' => $icons]);
+        
+        return view('study-plan.create', ['facultys' => $facultys,'majors' => $majors, 'educations' => $educations, 'years' => $years, 'semesters' => $semesters, 'subjects' => $subjects, 'icons' => $icons]);
     }
 
     public function store(Request $request)
     {
-        $facultys = Faculty::all();
-        $majors = Major::all();
-        $educations = Degree::all();
-        $years = StudyYear::all();
-        $semesters = Semester::all();
-        $subjects = Subject::all();
-        $icons = Fac_icon::all();
+        $facIcons = $request->input('fac_icon');
+        $facNames = $request->input('fac_name');
+        $majorNames = $request->input('major_name');
+        $educations = $request->input('education_name');
+        $study_year = $request->input('study_year');
+        $semester_name = $request->input('semester_name');
+        $subject_name = $request->input('subject_name');
+        $study_hour = $request->input('study_hour');
+        $credit = $request->input('credit');
+        $major_kh = $request->input('major_info_kh');
+        $major_en = $request->input('major_info_en');
 
-        $Faculty = count($facultys);
-        $Major = count($majors);
-        $Degree = count($educations);
-        $StudyYear = count($years);
-        $Semester = count($semesters);
-        $Subject = count($subjects);
-        $Fac_icon = count($icons);
+        $recordCount = count($facIcons);
+        $loops = 0;
 
-        DB::transaction(function () use($request, $Faculty, $Major, $Degree, $StudyYear,  $Semester, $Subject, $Fac_icon){
-        $validated = $request->validate([
-            'fac_icon' => ['required','integer', "max:$Fac_icon"],
-            'fac_name' => ['required','integer', "max:$Faculty"],
-            'major_name' => ['required','integer', "max:$Major"],
-            'education_name' => ['required','integer', "max:$Degree"],
-            'major_info_en' => ['required','integer', "max:$Major"],
-            'major_info_kh' => ['required','integer', "max:$Major"],
-            'study_year' => ['required','integer', "max:$StudyYear"],
-            'semester_name' => ['required','integer', "max:$Semester"],
-            'subject_name' => ['required','integer', "max:$Subject"],
-            'study_hour' => ['required','integer'],
-            'credit' => ['required','integer'],
+        for ($i = 0; $i < $recordCount; $i++) {
 
-        ]);
+            if (
+                $facIcons[$i] === null ||
+                $facNames[$i] === null ||
+                $majorNames[$i] === null ||
+                $educations[$i] === null ||
+                $study_year[$i] === null ||
+                $semester_name[$i] === null ||
+                $subject_name[$i] === null ||
+                $study_hour[$i] === null ||
+                $credit[$i] === null ||
+                $major_kh[$i] === null ||
+                $major_en[$i] === null
+            ) {
+                // Skip this record if any input value is null
+                continue;
+            }
+                $loops++;
+                $record = new StudyPlan([
+                    'fac_icon' => $facIcons[$i],
+                    'fac_name' => $facNames[$i],
+                    'major_name' => $majorNames[$i],
+                    'education_name' => $educations[$i],
+                    'study_year' => $study_year[$i],
+                    'semester_name' => $semester_name[$i],
+                    'subject_name' => $subject_name[$i],
+                    'study_hour' => $study_hour[$i],
+                    'credit' => $credit[$i],
+                    'major_info_kh' => $major_kh[$i],
+                    'major_info_en' => $major_en[$i],
+                    'user_id' => auth()->id(),
+                ]);
+                $record->save();
+    
+        }
 
-        $plan = new StudyPlan;
-        $plan->fac_icon = $request->fac_icon;
-        $plan->fac_name = $request->fac_name;
-        $plan->major_name = $request->major_name;
-        $plan->education_name = $request->education_name;
-        $plan->major_info_en = $request->major_info_en;
-        $plan->major_info_kh = $request->major_info_kh;
-        $plan->study_year = $request->study_year;
-        $plan->semester_name = $request->semester_name;
-        $plan->subject_name = $request->subject_name;
-        $plan->study_hour = $request->study_hour;
-        $plan->credit = $request->credit;
-        $plan->user_id = auth()->id(); 
-        $plan->save();
-
-        });
-
-        return redirect()->route('study-plan.index')->with('status', 'Study Plan Added  Successfully');
+        return redirect()->route('study-plan.index')->with('status', "Study Plan Added $loops records Successfully");
     }
 
     public function edit(string $id)

@@ -163,8 +163,8 @@ Route::controller(AuthController::class)->group(function (){
 Route::controller(StudyPlanController::class)->middleware('auth')->group(function () {
   Route::get('/study-plan', 'index')->name('study-plan.index');
   Route::get('/study-plan/create','create')->name('study-plan.create');
-  Route::post('/study-plan','store')->name('study-plan.store');
   Route::get('/study-plan/{id}', 'edit')->name('study-plan.edit');
+  Route::post('/study-plan','store')->name('study-plan.store');
   Route::put('/study-plan/{id}', 'update')->name('study-plan.update');
   Route::delete('/study-plan/{id}', 'destroy')->name('study-plan.destroy');
 });
@@ -174,6 +174,7 @@ Route::controller(MajorController::class)->middleware('auth')->group(function ()
   Route::get('/major', 'index')->name('study-plan.major.index');
   Route::get('/major/create','create')->name('study-plan.major.create');
   Route::post('/major/store','store')->name('study-plan.major.store');
+  Route::get('/get-majors-by-faculty/{faculty_id}', 'MajorController@getMajorsByFaculty');
   Route::get('/major/{id}', 'edit')->name('study-plan.major.edit');
   Route::put('major/{id}', 'update')->name('study-plan.major.update');
   Route::delete('major/{id}', 'destroy')->name('study-plan.major.destroy');

@@ -29,6 +29,8 @@ class ScholarshipController extends Controller
      */
     public function store(Request $request)
     {
+        // $facIcons = $request->input('fac_icon');
+
         $scholarships = new Scholarship;
         $scholarships -> scholarship_title_en = $request -> input('scholarship_title_en');
         $scholarships -> scholarship_title_kh = $request -> input('scholarship_title_kh');

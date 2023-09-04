@@ -59,7 +59,7 @@ class Fac_iconController extends Controller
         $icon = Fac_icon::findOrFail($id);
         $icon->icon_name = $request->icon_name;
         $icon->fac_name_en = $request->fac_name_en;
-        $icon->user_id = auth()->id(); 
+        $icon->user_id = auth()->id();                                                                                                                                                                 
         $icon->save();
         });
 
