@@ -40,7 +40,7 @@
         </div>
         <div class="form-outline mb-4">
           <label class="form-label" for="event_cover">Event Cover</label>
-          <input type="file" id="event_cover" name="event_cover" class="form-control" />
+          <input type="text" id="event_cover" name="event_cover" class="form-control" />
         </div>
         <!-- Content input -->
         <div class="form-outline mb-4">

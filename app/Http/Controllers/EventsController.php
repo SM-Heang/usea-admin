@@ -34,15 +34,7 @@ class EventsController extends Controller
         $event->event_title_en = $request -> input('event_title_en'); 
         $event->event_title_kh = $request -> input('event_title_kh'); 
         $event->event_date = $request -> input('event_date'); 
-        if($request->hasFile('event_cover')){
-            $file = $request->file('event_cover');
-            $extension = $file->getClientOriginalExtension();
-            $filename = time() . '.' . $extension;
-            // $file->move('../../media/event', $filename);
-            $event->event_cover = $filename;
-        }else{
-            return $request;
-        }
+        $event->event_cover = $request -> input('event_cover'); 
         $event->event_description_en = $request -> input('event_description_en'); 
         $event->event_description_kh = $request -> input('event_description_kh'); 
         $event->event_status = $request -> input('event_status'); 
@@ -79,7 +71,7 @@ class EventsController extends Controller
         $event->event_title_en = $request -> input('event_title_en'); 
         $event->event_title_kh = $request -> input('event_title_kh'); 
         $event->event_date = $request -> input('event_date'); 
-        $event->event_cover = $request -> input('event_cover'); 
+        $event->event_cover = $request -> input('event_cover');
         $event->event_description_en = $request -> input('event_description_en'); 
         $event->event_description_kh = $request -> input('event_description_kh'); 
         $event->event_status = $request -> input('event_status'); 
