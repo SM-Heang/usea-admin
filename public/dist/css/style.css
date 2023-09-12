@@ -1,1 +1,5 @@
-
+@import url("https://fonts.googleapis.com/css2?family=Merriweather:wght@300;700&family=Noto+Serif+Khmer:wght@300;400;500;600&family=Poppins:wght@200;400;600&display=swap");
+* {
+    font-family: "Noto Serif Khmer", sans-serif;
+}
+/* custome study plan */

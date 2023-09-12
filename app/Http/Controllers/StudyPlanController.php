@@ -28,11 +28,11 @@ class StudyPlanController extends Controller
         $facultys = Faculty::all();
         $educations = Degree::all();
         $years = StudyYear::all();
-        $semesters = Semester::all();
+        // $semesters = Semester::all();
         $subjects = Subject::all();
         $icons = Fac_icon::all();
-        
-        return view('study-plan.create', ['facultys' => $facultys,'majors' => $majors, 'educations' => $educations, 'years' => $years, 'semesters' => $semesters, 'subjects' => $subjects, 'icons' => $icons]);
+
+        return view('study-plan.create', ['facultys' => $facultys,'majors' => $majors, 'educations' => $educations, 'years' => $years, 'subjects' => $subjects, 'icons' => $icons]);
     }
 
     public function store(Request $request)
@@ -42,7 +42,7 @@ class StudyPlanController extends Controller
         $majorNames = $request->input('major_name');
         $educations = $request->input('education_name');
         $study_year = $request->input('study_year');
-        $semester_name = $request->input('semester_name');
+        // $semester_name = $request->input('semester_name');
         $subject_name = $request->input('subject_name');
         $study_hour = $request->input('study_hour');
         $credit = $request->input('credit');
@@ -60,7 +60,6 @@ class StudyPlanController extends Controller
                 $majorNames[$i] === null ||
                 $educations[$i] === null ||
                 $study_year[$i] === null ||
-                $semester_name[$i] === null ||
                 $subject_name[$i] === null ||
                 $study_hour[$i] === null ||
                 $credit[$i] === null ||
@@ -77,7 +76,6 @@ class StudyPlanController extends Controller
                     'major_name' => $majorNames[$i],
                     'education_name' => $educations[$i],
                     'study_year' => $study_year[$i],
-                    'semester_name' => $semester_name[$i],
                     'subject_name' => $subject_name[$i],
                     'study_hour' => $study_hour[$i],
                     'credit' => $credit[$i],
@@ -86,7 +84,7 @@ class StudyPlanController extends Controller
                     'user_id' => auth()->id(),
                 ]);
                 $record->save();
-    
+
         }
 
         return redirect()->route('study-plan.index')->with('status', "Study Plan Added $loops records Successfully");
@@ -99,10 +97,10 @@ class StudyPlanController extends Controller
         $majors = Major::all();
         $educations = Degree::all();
         $years = StudyYear::all();
-        $semesters = Semester::all();
+        // $semesters = Semester::all();
         $subjects = Subject::all();
         $icons = Fac_icon::all();
-        return view('study-plan.edit', ['plan' => $plan, 'facultys' => $facultys, 'majors' => $majors, 'educations' => $educations, 'years' => $years, 'semesters' => $semesters, 'subjects' => $subjects, 'icons' => $icons]);
+        return view('study-plan.edit', ['plan' => $plan, 'facultys' => $facultys, 'majors' => $majors, 'educations' => $educations, 'years' => $years, 'subjects' => $subjects, 'icons' => $icons]);
     }
 
     public function update(Request $request, $id)
@@ -111,7 +109,6 @@ class StudyPlanController extends Controller
         $majors = Major::all();
         $educations = Degree::all();
         $years = StudyYear::all();
-        $semesters = Semester::all();
         $subjects = Subject::all();
         $icons = Fac_icon::all();
 
@@ -119,7 +116,6 @@ class StudyPlanController extends Controller
         $Major = count($majors);
         $Degree = count($educations);
         $StudyYear = count($years);
-        $Semester = count($semesters);
         $Subject = count($subjects);
         $Fac_icon = count($icons);
 
@@ -132,7 +128,6 @@ class StudyPlanController extends Controller
             'major_info_en' => ['required','integer', "max:$Major"],
             'major_info_kh' => ['required','integer', "max:$Major"],
             'study_year' => ['required','integer', "max:$StudyYear"],
-            'semester_name' => ['required','integer', "max:$Semester"],
             'subject_name' => ['required','integer', "max:$Subject"],
             'study_hour' => ['required','integer'],
             'credit' => ['required','integer'],
@@ -147,17 +142,16 @@ class StudyPlanController extends Controller
         $plan->major_info_en = $request->major_info_en;
         $plan->major_info_kh = $request->major_info_kh;
         $plan->study_year = $request->study_year;
-        $plan->semester_name = $request->semester_name;
         $plan->subject_name = $request->subject_name;
         $plan->study_hour = $request->study_hour;
         $plan->credit = $request->credit;
-        $plan->user_id = auth()->id(); 
+        $plan->user_id = auth()->id();
         $plan->save();
 
         });
 
         return redirect()->route('study-plan.index')->with('status', 'Study Plan Edited  Successfully');
-        
+
     }
 
     public function destroy($id)

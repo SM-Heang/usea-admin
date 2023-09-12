@@ -1,13 +1,13 @@
 @extends('layouts.app')
 @push('dashboard-style')
 <style>
-  .description{
-    overflow: hidden;
-    display: -webkit-box;
-    -webkit-line-clamp: 2; /* number of lines to show */
-    line-clamp: 2; 
-    -webkit-box-orient: vertical;
-  }
+    /* .table tr th{
+        font-size: 12px;
+        margin: 0;
+        padding: 15px;
+        font-family: 'Poppins', sans-serif;
+        display: none;
+    } */
 </style>
 @endpush
 @section('content')
@@ -39,23 +39,25 @@
       <div class="col-md-12">
         <h1 class="text-center">USEA Study Plan</h1>
         <a href="{{route('study-plan.create')}}" class="btn btn-success float-right p-2 m-2"> Add Study Plan <i class="fas fa-plus"></i></a>
-        <table class="table">
+        <table class="table" id="table">
           <tr class="text-center">
-            <th>study_plan_id</th>
+            <th>Study ID</th>
             <th>Updated by</th>
-            <th>Fac_icon</th>
-            <th>fac_name</th>
-            <th>Major_name</th>
-            <th>Education_name</th>
-            <th>Major_info_en</th>
-            <th>Major_info_kh</th>
-            <th>study_year</th>
-            <th>semester_name</th>
-            <th>subject_name</th>
-            <th>study_hour</th>
-            <th>credit</th>
-            <th>Updated at</th>
-            <th>Created at</th>
+            <th>Faculty Icon</th>
+            <th>Faculty Name</th>
+            <th>Major Name</th>
+            <th>Education Name</th>
+            <th>Major Info En</th>
+            <th>Major Info Kh</th>
+            <th>Study Year</th>
+            {{-- <th>semester_name</th> --}}
+            <th>Subject Name</th>
+            <th>Study Hour</th>
+            <th>Credit</th>
+            <th>Updated At</th>
+            <th>Created At</th>
+            <th>Action</th>
+
           </tr>
           @foreach ($plans as $plan)
           <tr class="text-center">
@@ -68,14 +70,14 @@
             <td>{{ mb_strimwidth($plan->major?->major_info_en, 0 ,50, "...") }}</td>
             <td>{{ mb_strimwidth($plan->major?->major_info_kh, 0 ,50, "...") }}</td>
             <td>{{ $plan->studyYear?->study_year_kh}}</td>
-            <td>{{ $plan->semester?->semester_name_kh}}</td>
+            {{-- <td>{{ $plan->semester?->semester_name_kh}}</td> --}}
             <td>{{ $plan->subject?->subject_name_kh}}</td>
             <td>{{ $plan->study_hour }}</td>
             <td>{{ $plan->credit }}</td>
             <td>{{ $plan->updated_at?->format('d-M-Y')}}</td>
             <td>{{ $plan->created_at?->format('d-M-Y')}}</td>
             <td class="text-center d-flex justify-content-center">
-              <a href="{{ route('study-plan.edit', ['id' => $plan->study_plan_id]) }}" class="btn btn-info text-white"><i class="far fa-edit"></i></a> 
+              <a href="{{ route('study-plan.edit', ['id' => $plan->study_plan_id]) }}" class="btn btn-info text-white"><i class="far fa-edit"></i></a>
               {{-- Modal confirm Delete --}}
               <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#myModal">
                 <i class="far fa-trash-alt"></i>

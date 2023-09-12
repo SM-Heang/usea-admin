@@ -13,7 +13,7 @@ class ArticleController extends Controller
     {
         $articles = Article::paginate(15);
         return view('articles.index', ['articles' => $articles]);
-        
+
     }
 
     /**
@@ -30,14 +30,14 @@ class ArticleController extends Controller
     public function store(Request $request)
     {
         $article = new Article;
-        $article->user_id = auth()->id(); 
-        $article->article_title_en = $request -> input('article_title_en'); 
-        $article->article_title_kh = $request -> input('article_title_kh'); 
-        $article->article_description_en = $request -> input('article_description_en'); 
-        $article->article_description_kh = $request -> input('article_description_kh'); 
-        $article->categories_id = $request -> input('categories_id'); 
-        $article->keywords = $request -> input('keywords'); 
-        $article->sitemap = $request -> input('sitemap'); 
+        $article->user_id = auth()->id();
+        $article->article_title_en = $request -> input('article_title_en');
+        $article->article_title_kh = $request -> input('article_title_kh');
+        $article->article_description_en = $request -> input('article_description_en');
+        $article->article_description_kh = $request -> input('article_description_kh');
+        $article->categories_id = $request -> input('categories_id');
+        $article->keywords = $request -> input('keywords');
+        $article->sitemap = $request -> input('sitemap');
         $article->save();
         return redirect()->route('articles.index')->with('status', 'Article Added Successfully');
     }
@@ -65,14 +65,14 @@ class ArticleController extends Controller
     public function update(Request $request, string $id)
     {
         $article = Article::findOrFail($id);
-        $article->user_id = auth()->id(); 
-        $article->article_title_en = $request -> input('article_title_en'); 
-        $article->article_title_kh = $request -> input('article_title_kh'); 
-        $article->article_description_en = $request -> input('article_description_en'); 
-        $article->article_description_kh = $request -> input('article_description_kh'); 
-        $article->categories_id = $request -> input('categories_id'); 
-        $article->keywords = $request -> input('keywords'); 
-        $article->sitemap = $request -> input('sitemap'); 
+        $article->user_id = auth()->id();
+        $article->article_title_en = $request -> input('article_title_en');
+        $article->article_title_kh = $request -> input('article_title_kh');
+        $article->article_description_en = $request -> input('article_description_en');
+        $article->article_description_kh = $request -> input('article_description_kh');
+        $article->categories_id = $request -> input('categories_id');
+        $article->keywords = $request -> input('keywords');
+        $article->sitemap = $request -> input('sitemap');
         $article->save();
         return redirect()->route('articles.index')->with('status', 'Article Update Successfully');
     }

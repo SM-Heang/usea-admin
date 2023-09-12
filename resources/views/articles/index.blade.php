@@ -5,7 +5,7 @@
     overflow: hidden;
     display: -webkit-box;
     -webkit-line-clamp: 2; /* number of lines to show */
-    line-clamp: 2; 
+    line-clamp: 2;
     -webkit-box-orient: vertical;
   }
 </style>
@@ -64,13 +64,13 @@
             <td>{{ Str::limit($article->keywords, '30', '...') }}</td>
             <td>{{ Str::limit($article->sitemap, '30', '...') }}</td>
             <td class="text-center d-flex justify-content-center">
-              <a href="{{ route('articles.edit', ['id' => $article->article_id]) }}" class="btn btn-info text-white"><i class="far fa-edit"></i></a> 
+              <a href="{{ route('articles.edit', ['id' => $article->article_id]) }}" class="btn btn-info text-white"><i class="far fa-edit"></i></a>
               <form action="{{ route('articles.destroy', ['id' => $article->article_id] ) }}" method="POST">
                 @csrf
                 @method('DELETE')
                 <button type="submit" class="btn btn-danger" onclick="return confirm('Are You Sure?')"><i class="far fa-trash-alt"></i></button>
               </form>
-              
+
             </td>
           </tr>
           @endforeach
