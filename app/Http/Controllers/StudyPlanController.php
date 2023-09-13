@@ -37,6 +37,7 @@ class StudyPlanController extends Controller
 
     public function store(Request $request)
     {
+
         $facIcons = $request->input('fac_icon');
         $facNames = $request->input('fac_name');
         $majorNames = $request->input('major_name');
@@ -71,6 +72,7 @@ class StudyPlanController extends Controller
             }
                 $loops++;
                 $record = new StudyPlan([
+                    'user_id' => auth()->id(),
                     'fac_icon' => $facIcons[$i],
                     'fac_name' => $facNames[$i],
                     'major_name' => $majorNames[$i],
@@ -81,7 +83,6 @@ class StudyPlanController extends Controller
                     'credit' => $credit[$i],
                     'major_info_kh' => $major_kh[$i],
                     'major_info_en' => $major_en[$i],
-                    'user_id' => auth()->id(),
                 ]);
                 $record->save();
 
@@ -119,7 +120,7 @@ class StudyPlanController extends Controller
         $Subject = count($subjects);
         $Fac_icon = count($icons);
 
-        DB::transaction(function () use($request, $id, $Faculty, $Major, $Degree, $StudyYear,  $Semester, $Subject, $Fac_icon){
+        DB::transaction(function () use($request, $id, $Faculty, $Major, $Degree, $StudyYear, $Subject, $Fac_icon){
         $validated = $request->validate([
             'fac_icon' => ['required','integer', "max:$Fac_icon"],
             'fac_name' => ['required','integer', "max:$Faculty"],
@@ -135,6 +136,7 @@ class StudyPlanController extends Controller
         ]);
 
         $plan = StudyPlan::findOrFail($id);
+        $plan->user_id = auth()->id();
         $plan->fac_icon = $request->fac_icon;
         $plan->fac_name = $request->fac_name;
         $plan->major_name = $request->major_name;
@@ -145,7 +147,6 @@ class StudyPlanController extends Controller
         $plan->subject_name = $request->subject_name;
         $plan->study_hour = $request->study_hour;
         $plan->credit = $request->credit;
-        $plan->user_id = auth()->id();
         $plan->save();
 
         });
