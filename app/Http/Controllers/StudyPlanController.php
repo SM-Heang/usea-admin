@@ -45,7 +45,7 @@ class StudyPlanController extends Controller
         $study_year = $request->input('study_year');
         // $semester_name = $request->input('semester_name');
         $subject_name = $request->input('subject_name');
-        $study_hour = $request->input('study_hour');
+        $total_credit = $request->input('total_credit');
         $credit = $request->input('credit');
         $major_kh = $request->input('major_info_kh');
         $major_en = $request->input('major_info_en');
@@ -62,7 +62,7 @@ class StudyPlanController extends Controller
                 $educations[$i] === null ||
                 $study_year[$i] === null ||
                 $subject_name[$i] === null ||
-                $study_hour[$i] === null ||
+                $total_credit[$i] === null ||
                 $credit[$i] === null ||
                 $major_kh[$i] === null ||
                 $major_en[$i] === null
@@ -79,7 +79,7 @@ class StudyPlanController extends Controller
                     'education_name' => $educations[$i],
                     'study_year' => $study_year[$i],
                     'subject_name' => $subject_name[$i],
-                    'study_hour' => $study_hour[$i],
+                    'total_credit' => $total_credit[$i],
                     'credit' => $credit[$i],
                     'major_info_kh' => $major_kh[$i],
                     'major_info_en' => $major_en[$i],
@@ -130,7 +130,7 @@ class StudyPlanController extends Controller
             'major_info_kh' => ['required','integer', "max:$Major"],
             'study_year' => ['required','integer', "max:$StudyYear"],
             'subject_name' => ['required','integer', "max:$Subject"],
-            'study_hour' => ['required','integer'],
+            'total_credit' => ['required','integer'],
             'credit' => ['required','integer'],
 
         ]);
@@ -145,8 +145,8 @@ class StudyPlanController extends Controller
         $plan->major_info_kh = $request->major_info_kh;
         $plan->study_year = $request->study_year;
         $plan->subject_name = $request->subject_name;
-        $plan->study_hour = $request->study_hour;
         $plan->credit = $request->credit;
+        $plan->total_credit = $request->total_credit;
         $plan->save();
 
         });
