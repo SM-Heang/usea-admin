@@ -14,7 +14,7 @@
       </div>
       <div class="info">
           <a href="#" class="d-block">
-            Menheang Sao   
+            Menheang Sao
           </a>
       </div>
     </div> --}}
@@ -76,7 +76,7 @@
               </a>
             </li>
           </ul>
-        </li> 
+        </li>
         <li class="nav-item {{ Request::is('events', 'events-images') ? 'menu-open' :'' }}">
           <a href="#" class="nav-link {{ Request::is('events', 'events-images') ? 'active' :'' }}">
             <i class="far fa-calendar nav-icon"></i>
@@ -99,13 +99,19 @@
               </a>
             </li>
           </ul>
-        </li> 
+        </li>
         <li class="nav-item">
           <a href="{{ route('partnership.index') }}" class="nav-link {{ Request::is('partnership') ? 'active' : '' }}">
             <i class="fas fa-handshake nav-icon"></i>
             <p>USEA Partnership</p>
           </a>
         </li>
+        <li class="nav-item">
+            <a href="{{ route('career.index') }}" class="nav-link {{ Request::is('career') ? 'active' : '' }}">
+              <i class="fas fa-briefcase nav-icon"></i>
+              <p>USEA Career Center</p>
+            </a>
+          </li>
         <li class="nav-item {{ Request::is('scholarship', 'scholarship-category', 'scholarship-group') ? 'menu-open' :'' }}">
           <a href="#" class="nav-link {{ Request::is('scholarship', 'scholarship-category', 'scholarship-group') ? 'active' :'' }}">
             <i class="nav-icon fas fa-table"></i>
@@ -216,7 +222,7 @@
           <form action="{{ route('logout') }}" method="POST">
                 @csrf
                 <button role="button" type="submit" class="btn btn-danger"><i class="fas fa-sign-out-alt nav-icon"></i></button>
-          </form>  
+          </form>
           @else
         </li>
         <li class="nav-item">

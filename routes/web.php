@@ -19,6 +19,7 @@ use App\Http\Controllers\SubjectController;
 use App\Http\Controllers\StudyYearController;
 use App\Http\Controllers\SemesterController;
 use App\Http\Controllers\Fac_iconController;
+use App\Http\Controllers\CareerController;
 
 use Illuminate\Support\Facades\Route;
 
@@ -42,7 +43,7 @@ Route::controller(UsersController::class)->middleware('auth')->group(function ()
   Route::delete('/user/{id}', 'destroy')->name('users.destroy');
 });
 
-//article route 
+//article route
 Route::controller(ArticleController::class)->middleware('auth')->group(function () {
   Route::get('/index','index')->name('articles.index');
   Route::get('/post','create')->name('articles.create');
@@ -52,7 +53,7 @@ Route::controller(ArticleController::class)->middleware('auth')->group(function 
   Route::delete('/article/{id}', 'destroy')->name('articles.destroy');
 });
 
-//article category route 
+//article category route
 Route::controller(ArticleCategoryController::class)->middleware('auth')->group(function () {
   Route::get('/home-article-category','index')->name('articles.categories.index');
   Route::get('/post-category','create')->name('articles.categories.create');
@@ -62,7 +63,7 @@ Route::controller(ArticleCategoryController::class)->middleware('auth')->group(f
   Route::delete('/article-category/{id}', 'destroy')->name('articles.categories.destroy');
 });
 
-//article group route 
+//article group route
 Route::controller(ArticleGroupController::class)->middleware('auth')->group(function () {
   Route::get('/home-article-group','index')->name('articles.group.index');
   Route::get('/post-group','create')->name('articles.group.create');
@@ -101,6 +102,16 @@ Route::controller(PartnershipController::class)->middleware('auth')->group(funct
   Route::put('/partnership/{id}', 'update')->name('partnership.update');
   Route::delete('/partnership/{id}', 'destroy')->name('partnership.destroy');
 });
+
+//career center route
+Route::controller(CareerController::class)->middleware('auth')->group(function () {
+    Route::get('/career', 'index')->name('career.index');
+    Route::get('/create-career','create')->name('career.create');
+    Route::post('/post-career','store')->name('career.store');
+    Route::get('/career/{id}', 'edit')->name('career.edit');
+    Route::put('/career/{id}', 'update')->name('career.update');
+    Route::delete('/career/{id}', 'destroy')->name('career.destroy');
+  });
 
 //scholarship route
 Route::controller(ScholarshipController::class)->middleware('auth')->group(function () {
@@ -152,7 +163,7 @@ Route::controller(StudyTourImagesController::class)->middleware('auth')->group(f
   Route::delete('/study-tour-image/{id}', 'destroy')->name('study-tour.images.destroy');
 });
 
-//login route 
+//login route
 Route::controller(AuthController::class)->group(function (){
   Route::get('/login', 'login')->name('login');
   Route::post('/authenticate', 'authenticate')->name('authenticate');

@@ -52,7 +52,6 @@
                             <th>Major Info En</th>
                             <th>Major Info Kh</th>
                             <th>Study Year</th>
-                            {{-- <th>semester_name</th> --}}
                             <th>Subject Name</th>
                             <th>Credit</th>
                             <th>Total Credit</th>
@@ -60,8 +59,6 @@
                             <th>Hour/Week</th>
                             <th>Total Hour</th>
                             <th>Course Hour</th>
-                            {{-- <th>Updated At</th>
-                            <th>Created At</th> --}}
                             <th>Action</th>
 
                         </tr>
@@ -84,8 +81,6 @@
                                 <td>{{ $plan->hour_per_week }}</td>
                                 <td>{{ $plan->total_hour }}</td>
                                 <td>{{ $plan->course_hour }}</td>
-                                {{-- <td>{{ $plan->updated_at?->format('d-M-Y') }}</td>
-                                <td>{{ $plan->created_at?->format('d-M-Y') }}</td> --}}
                                 <td class="text-center d-flex justify-content-center">
                                     <a href="{{ route('study-plan.edit', ['id' => $plan->study_plan_id]) }}"
                                         class="btn btn-info text-white"><i class="far fa-edit"></i></a>
