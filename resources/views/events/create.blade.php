@@ -26,40 +26,45 @@
         <form action="{{ route('events.store') }}" method="POST" enctype="multipart/form-data">
           @csrf
           <!-- Username input -->
-        <div class="form-outline mb-4">
-          <label class="form-label" for="title_en">Title En</label>
-          <input type="text" id="title_en" name="event_title_en" class="form-control" />
-        </div>
-        <div class="form-outline mb-4">
-          <label class="form-label" for="title_kh">Title Kh</label>
-          <input type="text" id="title_kh" name="event_title_kh" class="form-control" />
-        </div>
-        <div class="form-outline mb-4">
-          <label class="form-label" for="event_date">Event Date</label>
-          <input type="date" id="event_date" name="event_date" class="form-control" />
-        </div>
-        <div class="form-outline mb-4">
-          <label class="form-label" for="event_cover">Event Cover</label>
-          <input type="file" id="event_cover" name="event_cover" class="form-control" />
-        </div>
-        <!-- Content input -->
-        <div class="form-outline mb-4">
-          <label class="form-label" for="summernote">Event En</label>
-          <textarea name="event_description_en" id="summernote" ></textarea>
-        </div>
-        <div class="form-outline mb-4">
-          <label class="form-label" for="summernote1">Event Kh</label>
-          <textarea name="event_description_kh" id="summernote1" ></textarea>
-        </div>
-        <div class="form-outline mb-4">
-          <label class="form-label" for="event_status">Event Status</label>
-          {{-- <input type="text" id="" name="event_status" class="form-control" /> --}}
-          <select name="event_status" id="event_status" class="form-control">
-            <option selected disabled>Select Event Status</option>
-            <option value="upcoming">Upcoming</option>
-            <option value="past">Past</option>
-          </select>
-        </div>
+          <div class="container">
+            <div class="row">
+                <div class="col-xxl-6 form-outline mb-4">
+                    <label class="form-label" for="title_en">Title English</label>
+                    <input type="text" id="title_en" name="event_title_en" class="form-control" />
+                </div>
+                <div class="col-xxl-6 form-outline mb-4">
+                    <label class="form-label" for="title_kh">Title Khmer</label>
+                    <input type="text" id="title_kh" name="event_title_kh" class="form-control" />
+                </div>
+                <div class="col-xxl-6 form-outline mb-4">
+                    <label class="form-label" for="event_cover">Event Cover</label>
+                    <input type="file" id="event_cover" name="event_cover" class="form-control" />
+                </div>
+                <div class="col-xxl-6 form-outline mb-4">
+                    <label class="form-label" for="event_date">Event Date</label>
+                    <input type="date" id="event_date" name="event_date" class="form-control" />
+                </div>
+                  <!-- Content input -->
+                  <div class="col-xxl-6 form-outline mb-4">
+                    <label class="form-label" for="summernote">Event En</label>
+                    <textarea name="event_description_en" id="summernote" ></textarea>
+                  </div>
+                  <div class="col-xxl-6 form-outline mb-4">
+                    <label class="form-label" for="summernote1">Event Kh</label>
+                    <textarea name="event_description_kh" id="summernote1" ></textarea>
+                  </div>
+                  <div class="form-outline mb-4">
+                    <label class="form-label" for="event_status">Event Status</label>
+                    {{-- <input type="text" id="" name="event_status" class="form-control" /> --}}
+                    <select name="event_status" id="event_status" class="form-control">
+                      <option selected disabled>Select Event Status</option>
+                      <option value="upcoming">Upcoming</option>
+                      <option value="past">Past</option>
+                    </select>
+                  </div>
+            </div>
+          </div>
+
         {{-- <div class="form-outline mb-4">
           <label class="form-label" for="event_style">Event Style</label>
           <input type="text" id="event_style" name="event_style" class="form-control" />
