@@ -48,8 +48,8 @@ class EventsController extends Controller
         $event->event_description_en = $request -> input('event_description_en');
         $event->event_description_kh = $request -> input('event_description_kh');
         $event->event_status = $request -> input('event_status');
-        $event->event_style = $request -> input('event_style');
-        $event->tags = $request -> input('tag');
+        // $event->event_style = $request -> input('event_style');
+        // $event->tags = $request -> input('tag');
         $event->save();
         return redirect()->route('events.index')->with('status', 'Event Added Successfully');
     }
@@ -96,8 +96,8 @@ class EventsController extends Controller
         $event->event_description_en = $request -> input('event_description_en');
         $event->event_description_kh = $request -> input('event_description_kh');
         $event->event_status = $request -> input('event_status');
-        $event->event_style = $request -> input('event_style');
-        $event->tags = $request -> input('tag');
+        // $event->event_style = $request -> input('event_style');
+        // $event->tags = $request -> input('tag');
         $event->save();
         return redirect()->route('events.index')->with('status', 'Event Updated Successfully');
     }
