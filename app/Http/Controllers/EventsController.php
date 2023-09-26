@@ -30,16 +30,26 @@ class EventsController extends Controller
     public function store(Request $request)
     {
         $event = new Event;
-        $event->user_id = auth()->id(); 
-        $event->event_title_en = $request -> input('event_title_en'); 
-        $event->event_title_kh = $request -> input('event_title_kh'); 
-        $event->event_date = $request -> input('event_date'); 
-        $event->event_cover = $request -> input('event_cover'); 
-        $event->event_description_en = $request -> input('event_description_en'); 
-        $event->event_description_kh = $request -> input('event_description_kh'); 
-        $event->event_status = $request -> input('event_status'); 
-        $event->event_style = $request -> input('event_style'); 
-        $event->tags = $request -> input('tag'); 
+        $event->user_id = auth()->id();
+        $event->event_title_en = $request -> input('event_title_en');
+        $event->event_title_kh = $request -> input('event_title_kh');
+        $event->event_date = $request -> input('event_date');
+        if($request->hasfile('event_cover')){
+            $file = $request->file('event_cover');
+            $extension = $file->getClientOriginalExtension();
+            // $filename = $file->getClientOriginalName();
+            $filename = time() . '.' . $extension;
+            $file->move('../../usea-edu.kh/media/events/', $filename);
+            $event->event_cover = $filename;
+        }else{
+            return $request;
+            $event->event_cover = '';
+        }
+        $event->event_description_en = $request -> input('event_description_en');
+        $event->event_description_kh = $request -> input('event_description_kh');
+        $event->event_status = $request -> input('event_status');
+        $event->event_style = $request -> input('event_style');
+        $event->tags = $request -> input('tag');
         $event->save();
         return redirect()->route('events.index')->with('status', 'Event Added Successfully');
     }
@@ -67,16 +77,27 @@ class EventsController extends Controller
     public function update(Request $request, string $id)
     {
         $event = Event::findOrFail($id);
-        $event->user_id = auth()->id(); 
-        $event->event_title_en = $request -> input('event_title_en'); 
-        $event->event_title_kh = $request -> input('event_title_kh'); 
-        $event->event_date = $request -> input('event_date'); 
-        $event->event_cover = $request -> input('event_cover');
-        $event->event_description_en = $request -> input('event_description_en'); 
-        $event->event_description_kh = $request -> input('event_description_kh'); 
-        $event->event_status = $request -> input('event_status'); 
-        $event->event_style = $request -> input('event_style'); 
-        $event->tags = $request -> input('tag'); 
+        $event->user_id = auth()->id();
+        $event->event_title_en = $request -> input('event_title_en');
+        $event->event_title_kh = $request -> input('event_title_kh');
+        $event->event_date = $request -> input('event_date');
+        if($request->hasfile('event_cover')){
+            $file = $request->file('event_cover');
+            $extension = $file->getClientOriginalExtension();
+            // $filename = $file->getClientOriginalName();
+            $filename = time() . '.' . $extension;
+            $file->move('../../usea-edu.kh/media/events/', $filename);
+            $event->event_cover = $filename;
+        }else{
+            return $request;
+            $event->event_cover = '';
+        }
+        // $event->event_cover = $request -> input('event_cover');
+        $event->event_description_en = $request -> input('event_description_en');
+        $event->event_description_kh = $request -> input('event_description_kh');
+        $event->event_status = $request -> input('event_status');
+        $event->event_style = $request -> input('event_style');
+        $event->tags = $request -> input('tag');
         $event->save();
         return redirect()->route('events.index')->with('status', 'Event Updated Successfully');
     }

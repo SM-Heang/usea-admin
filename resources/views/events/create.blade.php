@@ -40,41 +40,41 @@
         </div>
         <div class="form-outline mb-4">
           <label class="form-label" for="event_cover">Event Cover</label>
-          <input type="text" id="event_cover" name="event_cover" class="form-control" />
+          <input type="file" id="event_cover" name="event_cover" class="form-control" />
         </div>
         <!-- Content input -->
         <div class="form-outline mb-4">
           <label class="form-label" for="summernote">Event En</label>
           <textarea name="event_description_en" id="summernote" ></textarea>
-        </div>   
+        </div>
         <div class="form-outline mb-4">
           <label class="form-label" for="summernote1">Event Kh</label>
           <textarea name="event_description_kh" id="summernote1" ></textarea>
-        </div> 
+        </div>
         <div class="form-outline mb-4">
           <label class="form-label" for="event_status">Event Status</label>
           {{-- <input type="text" id="" name="event_status" class="form-control" /> --}}
           <select name="event_status" id="event_status" class="form-control">
-            <option selected disabled>Select</option>
-            <option value="current">current</option>
-            <option value="past">past</option>
+            <option selected disabled>Select Event Status</option>
+            <option value="upcoming">Upcoming</option>
+            <option value="past">Past</option>
           </select>
         </div>
-        <div class="form-outline mb-4">
+        {{-- <div class="form-outline mb-4">
           <label class="form-label" for="event_style">Event Style</label>
           <input type="text" id="event_style" name="event_style" class="form-control" />
         </div>
         <div class="form-outline mb-4">
           <label class="form-label" for="tags">Tag</label>
           <input type="text" id="tags" name="tags" class="form-control" />
-        </div> 
+        </div> --}}
         <div class="form-group text-right">
           <a href="{{ route('events.index') }}" type="submit" class="btn btn-success">Back</a>
           <button type="submit" class="btn btn-primary">Submit</button>
         </div>
         </form>
-      </div>  
-      
+      </div>
+
       <!-- /.col-->
     </div>
   </section>
