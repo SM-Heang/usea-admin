@@ -58,8 +58,8 @@
                     {{-- <input type="text" id="" name="event_status" class="form-control" /> --}}
                     <select name="event_status" id="event_status" class="form-control">
                       <option selected disabled>Select Event Status</option>
-                      <option value="upcoming">Upcoming</option>
-                      <option value="past">Past</option>
+                      <option value="2">Upcoming</option>
+                      <option value="1">Past</option>
                     </select>
                   </div>
             </div>

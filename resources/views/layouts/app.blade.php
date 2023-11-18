@@ -61,7 +61,7 @@
 {{-- <script src="https://cdn.tiny.cloud/1/vvkmnccqdibk2pxm43af2gd5pefttpqfixp2zdkyji4914t8/tinymce/6/plugins.min.js" referrerpolicy="origin"></script>
 <script>
    tinymce.init({
-     selector: 'textarea#myeditorinstance', 
+     selector: 'textarea#myeditorinstance',
      plugins: 'powerpaste advcode table lists checklist',
      toolbar: 'undo redo | blocks| bold italic | bullist numlist checklist | code | table'
    });
@@ -71,7 +71,7 @@
 {{-- Summernote --}}
 <script>
   $(function () {
-    
+
     $('#summernote').summernote({
       toolbar: [
     ['font-style', ['bold', 'italic', 'underline','strikethrough','superscript','subscript', 'clear']],
