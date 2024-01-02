@@ -23,5 +23,6 @@
   {{-- custom css  --}}
   <link rel="stylesheet" href="{{ asset('dist/css/style.css') }}">
   @stack('dashboard-style')
+  @stack('login-style')
 </head>
 <body class="hold-transition sidebar-mini">

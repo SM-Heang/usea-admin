@@ -59,7 +59,7 @@ class ArticleController extends Controller
         return view('articles.edit', ['articles' => $articles]);
     }
 
-    /**
+    /**-
      * Update the specified resource in storage.
      */
     public function update(Request $request, string $id)
