@@ -7,11 +7,11 @@ use Illuminate\Database\Eloquent\Model;
 
 class Users extends Model
 {
-    
+
     use HasFactory;
     protected $table = 'users';
     protected $primaryKey = 'id';
-    protected $fillable = ['name', 'email', 'email_verified_at', 'remember_token', 'create_at', 'update_at'];
+    protected $fillable = ['name', 'email', 'email_verified_at', 'create_at', 'update_at'];
 
     public function article(){
         return $this->hasMany(Article::class);

@@ -5,7 +5,7 @@
     overflow: hidden;
     display: -webkit-box;
     -webkit-line-clamp: 2; /* number of lines to show */
-    line-clamp: 2; 
+    line-clamp: 2;
     -webkit-box-orient: vertical;
   }
 </style>
@@ -41,18 +41,18 @@
         <a href="{{ route('events.create') }}" class="btn btn-success float-right p-2 m-2"> Add Events <i class="fas fa-plus"></i></a>
         <table class="table">
           <tr class="text-center">
-            <th>event_id</th>
-            <th>user_id</th>
-            <th>event_title_en</th>
-            <th>event_title_kh</th>
-            <th>event_date</th>
-            <th>event_cover</th>
-            <th>event_description_en</th>
-            <th>event_description_kh</th>
-            <th>event_status</th>
-            <th>event_style</th>
-            <th>tags</th>
-            <th>action</th>
+            <th>ID</th>
+            <th>Updated By</th>
+            <th>Title En</th>
+            <th>Title Kh</th>
+            <th>Event Date</th>
+            <th>Event Cover</th>
+            <th>Description En</th>
+            <th>Description Kh</th>
+            <th>Status</th>
+            <th>Style</th>
+            <th>Tags</th>
+            <th>Action</th>
           </tr>
           @foreach ($events as $event)
           <tr class="text-center">
@@ -68,7 +68,7 @@
             <td>{{ $event->event_style }}</td>
             <td>{{ $event->tags }}</td>
             <td class="text-center d-flex justify-content-center">
-              <a href="{{ route('events.edit', ['id' => $event->event_id]) }}" class="btn btn-info text-white"><i class="far fa-edit"></i></a> 
+              <a href="{{ route('events.edit', ['id' => $event->event_id]) }}" class="btn btn-info text-white"><i class="far fa-edit"></i></a>
               <form action="{{ route('events.destroy', ['id' => $event->event_id]) }}" method="POST">
                 @csrf
                 @method('DELETE')

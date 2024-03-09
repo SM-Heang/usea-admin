@@ -5,7 +5,7 @@
     overflow: hidden;
     display: -webkit-box;
     -webkit-line-clamp: 2; /* number of lines to show */
-    line-clamp: 2; 
+    line-clamp: 2;
     -webkit-box-orient: vertical;
   }
 </style>
@@ -41,11 +41,11 @@
         <a href="{{ route('articles.group.create') }}" class="btn btn-success float-right p-2 m-2"> Add Article Group <i class="fas fa-plus"></i></a>
         <table class="table">
           <tr class="text-center">
-            <th>group_id</th>
-            <th>last_updated_by</th>
-            <th>group_title_en</th>
-            <th>group_title_kh</th>
-            <th>action</th>
+            <th>Group ID</th>
+            <th>Updated By</th>
+            <th>Title En</th>
+            <th>Title Kh</th>
+            <th>Action</th>
           </tr>
           @foreach ($groups as $group)
           <tr class="text-center">
@@ -54,7 +54,7 @@
             <td>{{ $group->group_title_en }}</td>
             <td>{{ $group->group_title_kh }}</td>
             <td class="text-center d-flex justify-content-center">
-              <a href="{{ route('articles.group.edit', ['id' => $group->group_id]) }}" class="btn btn-info text-white"><i class="far fa-edit"></i></a> 
+              <a href="{{ route('articles.group.edit', ['id' => $group->group_id]) }}" class="btn btn-info text-white"><i class="far fa-edit"></i></a>
               <form action="{{ route('articles.group.destroy', ['id' => $group->group_id]) }}" method="POST">
                 @csrf
                 @method('DELETE')

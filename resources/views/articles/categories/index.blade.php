@@ -5,7 +5,7 @@
     overflow: hidden;
     display: -webkit-box;
     -webkit-line-clamp: 2; /* number of lines to show */
-    line-clamp: 2; 
+    line-clamp: 2;
     -webkit-box-orient: vertical;
   }
 </style>
@@ -41,12 +41,12 @@
         <a href="{{ route('articles.categories.create') }}" class="btn btn-success float-right p-2 m-2"> Add Category <i class="fas fa-plus"></i></a>
         <table class="table">
           <tr class="text-center">
-            <th>categories_id</th>
-            <th>last_updated_by</th>
-            <th>categories_title_en</th>
-            <th>categories_title_kh</th>
-            <th>group_id</th>
-            <th>action</th>
+            <th>ID</th>
+            <th>Update By</th>
+            <th>Title En</th>
+            <th>Title Kh</th>
+            <th>Group ID</th>
+            <th>Action</th>
           </tr>
           @foreach ($categories as $category)
           <tr class="text-center">
@@ -56,7 +56,7 @@
             <td>{{ $category->categories_title_kh }}</td>
             <td>{{ $category->group_id }}</td>
             <td class="text-center d-flex justify-content-center">
-              <a href="{{ route('articles.categories.edit', ['id' => $category->categories_id]) }}" class="btn btn-info text-white"><i class="far fa-edit"></i></a> 
+              <a href="{{ route('articles.categories.edit', ['id' => $category->categories_id]) }}" class="btn btn-info text-white"><i class="far fa-edit"></i></a>
               <form action="{{ route('articles.categories.destroy', ['id' => $category->categories_id]) }}" method="POST">
                 @csrf
                 @method('DELETE')

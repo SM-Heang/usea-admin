@@ -41,16 +41,16 @@
         <a href="{{ route('articles.create') }}" class="btn btn-success float-right p-2 m-2"> Add Articles <i class="fas fa-plus"></i></a>
         <table class="table">
           <tr class="text-center">
-            <th>article_id</th>
-            <th>last_updated_by</th>
-            <th>article_title_en</th>
-            <th>article_title_kh</th>
-            <th>article_description_en</th>
-            <th>article_description_kh</th>
-            <th>categories_id</th>
-            <th>keywords</th>
-            <th>sitemap</th>
-            <th>action</th>
+            <th>ID</th>
+            <th>Update By</th>
+            <th>Title En</th>
+            <th>Title Kh</th>
+            <th>Description En</th>
+            <th>Description Kh</th>
+            <th>Categories ID</th>
+            <th>Keywords</th>
+            <th>Sitemap</th>
+            <th>Action</th>
           </tr>
           @foreach ($articles as $article)
           <tr class="text-center">

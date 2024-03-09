@@ -5,7 +5,7 @@
     overflow: hidden;
     display: -webkit-box;
     -webkit-line-clamp: 2; /* number of lines to show */
-    line-clamp: 2; 
+    line-clamp: 2;
     -webkit-box-orient: vertical;
   }
 </style>
@@ -41,12 +41,12 @@
         <a href="{{ route('events.images.create') }}" class="btn btn-success float-right p-2 m-2"> Add Events Images <i class="fas fa-plus"></i></a>
         <table class="table">
           <tr class="text-center">
-            <th>image_id</th>
-            <th>event_id</th>
-            <th>images_title</th>
-            <th>images_name</th>
-            <th>images_style</th>
-            <th>action</th>
+            <th>ID</th>
+            <th>Event ID</th>
+            <th>Images Title</th>
+            <th>Images Name</th>
+            <th>Images Style</th>
+            <th>Action</th>
           </tr>
           @foreach ($images as $image)
           <tr class="text-center">
@@ -56,7 +56,7 @@
             <td>{{ Str::limit($image->images_name, '30', '...') }}</td>
             <td>{{ $image->images_style }}</td>
             <td class="text-center d-flex justify-content-center">
-              <a href="{{ route('events.images.edit', ['id' => $image->image_id]) }}" class="btn btn-info text-white"><i class="far fa-edit"></i></a> 
+              <a href="{{ route('events.images.edit', ['id' => $image->image_id]) }}" class="btn btn-info text-white"><i class="far fa-edit"></i></a>
               {{-- Modal confirm Delete --}}
               <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#myModal">
                 <i class="far fa-trash-alt"></i>

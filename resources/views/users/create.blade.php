@@ -42,11 +42,11 @@
         <div class="form-outline mb-4">
           <label class="form-label" for="password">Password</label>
           <input type="text" id="password" name="password" class="form-control" />
-        </div>   
-        <div class="form-outline mb-4">
+        </div>
+        {{-- <div class="form-outline mb-4">
           <label class="form-label" for="remember-token">Remember Token</label>
           <input type="text" id="remember-token" name="remember-token" class="form-control" />
-        </div> 
+        </div>  --}}
         <div class="form-outline mb-4">
           <label class="form-label" for="created-at">Created At</label>
           <input type="date" id="created-at" name="created-at" class="form-control" />
@@ -61,7 +61,7 @@
         </div>
         </form>
       </div>
-      
+
       <!-- /.col-->
     </div>
   </section>

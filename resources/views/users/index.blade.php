@@ -5,7 +5,7 @@
     overflow: hidden;
     display: -webkit-box;
     -webkit-line-clamp: 2; /* number of lines to show */
-    line-clamp: 2; 
+    line-clamp: 2;
     -webkit-box-orient: vertical;
   }
 </style>
@@ -46,7 +46,7 @@
             <th>Email</th>
             <th>Email Verified At</th>
             <th>Password</th>
-            <th>Remember Token</th>
+            {{-- <th>Remember Token</th> --}}
             <th>Created At</th>
             <th>Updated At</th>
             <th>Action</th>
@@ -58,17 +58,17 @@
             <td>{{ $user->email }}</td>
             <td>{{ $user->email_verified_at }}</td>
             <td>{{ Str::limit($user->password, '25', '...') }}</td>
-            <td>{{ Str::limit($user->remember_token, '25', '...') }}</td>
+            {{-- <td>{{ Str::limit($user->remember_token, '25', '...') }}</td> --}}
             <td>{{ $user->created_at }}</td>
             <td>{{ $user->updated }}</td>
             <td class="text-center d-flex justify-content-center">
-              <a href="{{ route('users.edit', ['id' => $user->id]) }}" class="btn btn-info text-white"><i class="far fa-edit"></i></a> 
+              <a href="{{ route('users.edit', ['id' => $user->id]) }}" class="btn btn-info text-white"><i class="far fa-edit"></i></a>
               <form action="{{ route('users.destroy', ['id' => $user->id]) }}" method="POST">
                 @csrf
                 @method('DELETE')
                 <button type="submit" class="btn btn-danger"><i class="far fa-trash-alt"></i></button>
               </form>
-              
+
             </td>
           </tr>
           @endforeach

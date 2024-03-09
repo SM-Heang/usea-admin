@@ -5,7 +5,7 @@
     overflow: hidden;
     display: -webkit-box;
     -webkit-line-clamp: 2; /* number of lines to show */
-    line-clamp: 2; 
+    line-clamp: 2;
     -webkit-box-orient: vertical;
   }
 </style>
@@ -41,17 +41,17 @@
         <a href="{{ route('partnership.create') }}" class="btn btn-success float-right p-2 m-2"> Add Partnership <i class="fas fa-plus"></i></a>
         <table class="table">
           <tr class="text-center">
-            <th>partnership_id</th>
-            <th>last_updated_by</th>
-            <th>partnership_title_en</th>
-            <th>partnership_title_kh</th>
-            <th>partnership_description_en</th>
-            <th>partnership_description_kh</th>
-            <th>partnership_type</th>
-            <th>partnership_link</th>
-            <th>partnership_logo</th>
-            <th>signed_date</th>
-            <th>action</th>
+            <th>ID</th>
+            <th>Updated By</th>
+            <th>Title En</th>
+            <th>Title Kh</th>
+            <th>Description En</th>
+            <th>Description Kh</th>
+            <th>Type</th>
+            <th>Link</th>
+            <th>Logo</th>
+            <th>Signed Date</th>
+            <th>Action</th>
           </tr>
           @foreach ($partnerships as $partnership)
           <tr class="text-center">
@@ -66,7 +66,7 @@
             <td>{{ Str::limit($partnership->partnership_logo, '30', '...') }}</td>
             <td>{{ Str::limit($partnership->signed_date, '30', '...') }}</td>
             <td class="text-center d-flex justify-content-center">
-              <a href="{{ route('partnership.edit', ['id' => $partnership->partnership_id]) }}" class="btn btn-info text-white"><i class="far fa-edit"></i></a> 
+              <a href="{{ route('partnership.edit', ['id' => $partnership->partnership_id]) }}" class="btn btn-info text-white"><i class="far fa-edit"></i></a>
               {{-- Modal confirm Delete --}}
               <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#myModal">
                 <i class="far fa-trash-alt"></i>
