@@ -10,6 +10,21 @@ class EventsController extends Controller
     /**
      * Display a listing of the resource.
      */
+    function remove_images_from_content($content, $folder = 'uploads/')
+    {
+        preg_match_all("/<img[^>]+/", $content, $matches);
+        if(is_array($matches) && count(matches)>0){
+            foreach($matches[0] as $img){
+                if(!strstr($img, "data:")){
+                    continue;
+                }
+                preg_match('/src="[^"]+/', $img, $match);
+            }
+        }
+        return $content;
+    }
+
+
     public function index()
     {
         $events = Event::paginate(15);
@@ -48,8 +63,6 @@ class EventsController extends Controller
         $event->event_description_en = $request -> input('event_description_en');
         $event->event_description_kh = $request -> input('event_description_kh');
         $event->event_status = $request -> input('event_status');
-        // $event->event_style = $request -> input('event_style');
-        // $event->tags = $request -> input('tag');
         $event->save();
         return redirect()->route('events.index')->with('status', 'Event Added Successfully');
     }
