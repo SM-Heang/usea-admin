@@ -31,7 +31,7 @@ use Illuminate\Support\Facades\Route;
 //   return Request::path() == $route ? 'active' : '';
 // }
 
-Route::get('/', [Controller::class, 'index'])->name('dashboard');
+Route::get('/', [Controller::class, 'index'])->middleware('auth')->name('dashboard');
 
 //user management route
 Route::controller(UsersController::class)->middleware('auth')->group(function () {

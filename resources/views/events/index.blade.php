@@ -15,6 +15,8 @@
  <div class="content-wrapper">
   @if (session('status'))
     <div class="alert alert-success">{{ session('status') }}</div>
+    @elseif (session('delete'))
+    <div class="alert alert-danger">{{ session('delete') }}</div>
   @endif
   <!-- Content Header (Page header) -->
   <section class="content-header">
