@@ -13,9 +13,11 @@
 @section('content')
      <!-- Content Wrapper. Contains page content -->
  <div class="content-wrapper">
-  @if (session('status'))
-    <div class="alert alert-success">{{ session('status') }}</div>
-  @endif
+    @if (session('status'))
+        <div class="alert alert-success">{{ session('status') }}</div>
+        @elseif (session('delete'))
+        <div class="alert alert-danger">{{ session('delete') }}</div>
+    @endif
   <!-- Content Header (Page header) -->
   <section class="content-header">
     <div class="container-fluid">

@@ -5,7 +5,7 @@
     overflow: hidden;
     display: -webkit-box;
     -webkit-line-clamp: 2; /* number of lines to show */
-    line-clamp: 2; 
+    line-clamp: 2;
     -webkit-box-orient: vertical;
   }
 </style>
@@ -13,9 +13,11 @@
 @section('content')
      <!-- Content Wrapper. Contains page content -->
  <div class="content-wrapper">
-  @if (session('status'))
-    <div class="alert alert-success">{{ session('status') }}</div>
-  @endif
+    @if (session('status'))
+        <div class="alert alert-success">{{ session('status') }}</div>
+        @elseif (session('delete'))
+        <div class="alert alert-danger">{{ session('delete') }}</div>
+    @endif
   <!-- Content Header (Page header) -->
   <section class="content-header">
     <div class="container-fluid">
@@ -56,7 +58,7 @@
             <td>{{ Str::limit($category->categories_title_kh, '50', '...') }}</td>
             <td>{{ $category->group_id }}</td>
             <td class="text-center d-flex justify-content-center">
-              <a href="{{ route('scholarship.categories.edit', ['id' => $category->categories_id]) }}" class="btn btn-info text-white"><i class="far fa-edit"></i></a> 
+              <a href="{{ route('scholarship.categories.edit', ['id' => $category->categories_id]) }}" class="btn btn-info text-white"><i class="far fa-edit"></i></a>
               {{-- Modal confirm Delete --}}
               <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#myModal">
                 <i class="far fa-trash-alt"></i>
