@@ -35,7 +35,7 @@ class EventsController extends Controller
 
         $images = $dom->getElementsByTagName('img');
 
-        $base_url = url('http://localhost/usea-admin-1/public/'); // Get the base URL of your application
+        $base_url = "http://".$_SERVER['HTTP_HOST']."/usea-admin-1/public"; // Get the base URL of your application
 
         foreach ($images as $k => $img) {
             $image_64 = $img->getAttribute('src');
@@ -66,7 +66,7 @@ class EventsController extends Controller
         $dom_kh->loadHTML(mb_convert_encoding($description_kh, 'HTML-ENTITIES', 'UTF-8'));
 
         $images_kh = $dom_kh->getElementsByTagName('img');
-        $base_url = url('http://localhost/usea-admin-1/public/'); // Get the base URL of your application
+        $base_url = "http://".$_SERVER['HTTP_HOST']."/usea-admin-1/public"; // Get the base URL of your application
 
         foreach ($images_kh as $k => $img) {
             $image_64 = $img->getAttribute('src');
@@ -198,7 +198,7 @@ class EventsController extends Controller
             $img->setAttribute('src', $image_url);
         }
 
-        $description_kh = $dom->saveHTML();
+        $description_kh = $dom_kh->saveHTML();
 
         $event = Event::findOrFail($id);
         $event->user_id = auth()->id();
@@ -223,7 +223,7 @@ class EventsController extends Controller
         // $event->event_style = $request -> input('event_style');
         // $event->tags = $request -> input('tag');
         $event->save();
-        return redirect()->route('events.index')->with('status', 'Event Updated Successfully');
+        return redirect()->back()->with('status', 'Event Updated Successfully');
     }
 
     /**
@@ -233,6 +233,6 @@ class EventsController extends Controller
     {
         $events = Event::findOrFail($id);
         $events->delete();
-        return redirect()->route('events.index')->with('delete', 'Event Deleted');
+        return redirect()->back()->with('delete', 'Event Deleted');
     }
 }
